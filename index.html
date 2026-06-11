@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cursor Miami: The 305's AI Coding Community</title>
+<meta name="description" content="Cursor Miami is the official Cursor community in Miami. Meetups, hackathons and demo nights for builders shipping with AI. Hosted by Cursor Ambassador Ben Milshtein." />
+<meta name="theme-color" content="#0a0a0f" />
+<meta property="og:title" content="Cursor Miami: The 305's AI Coding Community" />
+<meta property="og:description" content="2,200+ RSVPs. Hackathons, meetups & demo nights in Wynwood and Miami Beach. Subscribe on Luma." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://images.lumacdn.com/event-social/3x/463e14b1-f852-4fe5-8227-a3cc774c2777.png" />
+<meta property="og:url" content="https://luma.com/cursor-miami" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230a0a0f'/%3E%3Cpolygon points='12,2.2 20.5,7.1 12,12' fill='%234a4a54'/%3E%3Cpolygon points='12,2.2 12,12 3.5,7.1' fill='%233a3a44'/%3E%3Cpolygon points='3.5,7.1 12,12 12,21.8 3.5,16.9' fill='%2334343e'/%3E%3Cpolygon points='20.5,7.1 20.5,16.9 12,21.8' fill='%232c2c36'/%3E%3Cpolygon points='3.5,7.1 20.5,7.1 12,12' fill='%23ffffff'/%3E%3Cpolygon points='20.5,7.1 12,21.8 12,12' fill='%23d6d6dd'/%3E%3C/svg%3E" />
+<script>
+// set theme before first paint (saved choice, else system preference, else dark)
+(function(){var t=null;try{t=localStorage.getItem('cm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+document.documentElement.dataset.theme=t;})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   CURSOR MIAMI · Miami neon dark · Inter · self-contained
+   ============================================================ */
+:root{
+  --bg:#0a0a0f; --bg-2:#101018; --bg-3:#15151f;
+  --ink:#f5f6fa; --ink-2:#c2c6d4; --muted:#8a90a3; --faint:#5b6072;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14); --line-3:rgba(255,255,255,.3);
+  --glass:rgba(255,255,255,.05); --nav-bg:rgba(10,10,15,.72);
+  --card-shadow:0 24px 60px -28px rgba(0,0,0,.8);
+  --neon-sh:0 8px 26px -12px rgba(255,45,146,.5);
+  --neon-sh-hov:0 12px 34px -12px rgba(255,45,146,.62);
+  --orb-o:.5; --orb-o2:.35; --orb-o3:.28;
+  --magenta:#ff2d92; --coral:#ff6b5c; --cyan:#22d3ee; --violet:#8b5cf6;
+  --grad:linear-gradient(100deg,var(--magenta),var(--coral) 38%,var(--violet) 72%,var(--cyan));
+  --maxw:1140px; --r:16px; --r-lg:24px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  /* cursor cube, dark-bg variant (original icon) */
+  --cube-f1:#4a4a54; --cube-f2:#3a3a44; --cube-f3:#34343e; --cube-f4:#2c2c36;
+  --cube-fold:#ffffff; --cube-sliver:#d6d6dd; --cube-edge:rgba(255,255,255,.16);
+  --cube-glow:drop-shadow(0 0 34px rgba(34,211,238,.35)) drop-shadow(0 0 60px rgba(255,45,146,.22));
+}
+html[data-theme="light"]{
+  --bg:#f5f4ef; --bg-2:#ffffff; --bg-3:#eceae3;
+  --ink:#15161a; --ink-2:#3c4048; --muted:#6b7080; --faint:#9aa0ad;
+  --line:rgba(15,15,25,.09); --line-2:rgba(15,15,25,.16); --line-3:rgba(15,15,25,.34);
+  --glass:rgba(15,15,25,.04); --nav-bg:rgba(245,244,239,.78);
+  --card-shadow:0 24px 60px -30px rgba(20,20,30,.25);
+  --neon-sh:0 6px 18px -10px rgba(255,45,146,.35);
+  --neon-sh-hov:0 10px 26px -10px rgba(255,45,146,.45);
+  --orb-o:.16; --orb-o2:.12; --orb-o3:.1;
+  /* cursor cube, light-bg variant (original icon) */
+  --cube-f1:#494643; --cube-f2:#3a3835; --cube-f3:#2f2d2a; --cube-f4:#262422;
+  --cube-fold:#ffffff; --cube-sliver:#dcdbd8; --cube-edge:rgba(20,18,15,.18);
+  --cube-glow:drop-shadow(0 14px 30px rgba(20,20,30,.22));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:rgba(255,45,146,.35)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+section[id],header[id]{scroll-margin-top:86px}
+@media(max-width:720px){section{padding:60px 0}}
+h1,h2,h3{margin:0;font-weight:800;line-height:1.1;letter-spacing:-.025em}
+.h-sec{font-size:clamp(28px,4.2vw,44px);margin:12px 0 0}
+.sec-desc{color:var(--muted);font-size:16px;max-width:600px;margin-top:14px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;min-height:48px;padding:13px 26px;border-radius:100px;border:1px solid transparent;transition:transform .18s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-neon{background:var(--grad);background-clip:padding-box;color:#fff;border:none;padding:14px 27px;box-shadow:var(--neon-sh)}
+.btn-neon:hover{transform:translateY(-2px);box-shadow:var(--neon-sh-hov)}
+.btn-ghost{background:var(--glass);color:var(--ink);border-color:var(--line-2);backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--line-3);transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+/* logo */
+.logo-cube{width:32px;height:32px;flex:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.hero-lockup{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:30px}
+.hero-cube{width:84px;height:84px;filter:var(--cube-glow)}
+.hero-wordmark{font-size:clamp(17px,2.4vw,21px);font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--ink)}
+.hero-wordmark em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .25s,background .25s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav-inner{display:flex;align-items:center;gap:20px;height:70px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}
+.brand img{width:32px;height:32px;border-radius:9px}
+.brand .sub{color:var(--muted);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:28px;margin:0 auto}
+.nav-links a{position:relative;color:var(--ink-2);font-size:14.5px;font-weight:600;transition:color .2s;padding:4px 0}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--grad);border-radius:2px}
+.nav-burger{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:10px;min-width:44px;min-height:44px}
+.theme-btn{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:var(--glass);color:var(--ink);cursor:pointer;transition:border-color .2s,transform .18s var(--ease);flex:none}
+.theme-btn:hover{border-color:var(--line-3);transform:translateY(-1px)}
+.theme-btn svg{width:19px;height:19px}
+.theme-btn .ic-sun{display:none}
+html[data-theme="light"] .theme-btn .ic-sun{display:block}
+html[data-theme="light"] .theme-btn .ic-moon{display:none}
+@media(max-width:920px){.nav-links{display:none}.nav-cta{display:none}.nav-burger{display:block;margin-left:auto}}
+.mobile-menu{display:none;position:fixed;top:78px;left:14px;right:14px;z-index:99;background:var(--bg-2);border:1px solid var(--line-2);border-radius:20px;padding:8px 20px 18px;box-shadow:0 30px 70px -24px rgba(0,0,0,.5)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:15px 4px;font-size:16px;font-weight:600;border-bottom:1px solid var(--line)}
+.mobile-menu a:nth-last-child(2){border-bottom:0}
+.mobile-menu a.btn{display:flex;align-items:center;justify-content:center;width:100%;margin-top:12px;padding:13px 20px;border-bottom:0;box-shadow:none;text-align:center}
+
+/* hero */
+.hero{position:relative;padding:96px 0 80px;text-align:center;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:var(--orb-o);pointer-events:none;background:radial-gradient(circle closest-side,var(--oc),transparent 72%)}
+.orb-1{--oc:var(--magenta);width:640px;height:640px;top:-280px;left:-200px}
+.orb-2{--oc:var(--cyan);width:600px;height:600px;bottom:-320px;right:-180px;opacity:var(--orb-o2)}
+.orb-3{--oc:var(--violet);width:460px;height:460px;top:26%;right:14%;opacity:var(--orb-o3)}
+.hero .wrap{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:linear-gradient(var(--bg-2),var(--bg-2)) padding-box,var(--grad) border-box;border:1px solid transparent;border-radius:100px;padding:9px 20px;box-shadow:0 8px 28px -12px rgba(255,45,146,.45),0 4px 18px -10px rgba(34,211,238,.4)}
+.hero-badge .dot{position:relative;width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d399;flex:none}
+.hero-badge .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid #34d399;animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{0%{transform:scale(.55);opacity:.9}80%,100%{transform:scale(1.5);opacity:0}}
+@media(prefers-reduced-motion:reduce){.hero-badge .dot::after{animation:none;display:none}}
+.hero h1{font-size:clamp(42px,7.4vw,86px);font-weight:900;margin:26px auto 0;max-width:900px}
+.hero .tagline{color:var(--ink-2);font-size:clamp(16px,2.2vw,20px);max-width:640px;margin:22px auto 0}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.hero-stats{display:flex;gap:clamp(28px,6vw,72px);justify-content:center;flex-wrap:wrap;margin-top:64px}
+.stat .num{font-size:clamp(30px,4.4vw,46px);font-weight:900;letter-spacing:-.03em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .lbl{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+
+/* marquee */
+.marquee{padding:34px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-inner{display:flex;flex-direction:column;gap:6px;transform:rotate(-1.4deg) scale(1.04)}
+.m-track{display:flex;align-items:center;width:max-content;animation:scroll 26s linear infinite}
+.m-track.rev{animation:scroll-rev 34s linear infinite}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@keyframes scroll-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.m-track,.m-track.rev{animation:none}}
+.m-track span{font-size:clamp(20px,3.2vw,32px);font-weight:900;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;padding:0 18px;line-height:1.35}
+.m-track .w-grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.m-track .w-solid{color:var(--ink)}
+.m-track .w-line{color:transparent;-webkit-text-stroke:1.4px var(--faint)}
+.m-track .star{font-weight:400;color:var(--magenta);padding:0;font-size:.72em}
+.m-track.rev .star{color:var(--cyan)}
+
+/* cards */
+.card{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);border-color:var(--line-2);box-shadow:var(--card-shadow)}
+@media(prefers-reduced-motion:reduce){.card:hover{transform:none}}
+
+/* upcoming */
+.luma-box{margin-top:40px;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:10px}
+.luma-box iframe{width:100%;height:480px;border:0;border-radius:var(--r);display:block;background:transparent}
+@media(max-width:720px){.luma-box iframe{height:580px}}
+.tba{position:relative;overflow:hidden;border-radius:var(--r);padding:72px 28px 76px;text-align:center;background:var(--bg-3)}
+.tba>*{position:relative;z-index:2}
+.tba .orb{position:absolute;z-index:1}
+.tba-cube{width:64px;height:64px;margin:0 auto 18px;display:block;filter:var(--cube-glow);animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(prefers-reduced-motion:reduce){.tba-cube{animation:none}}
+.tba-badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;margin-bottom:18px}
+.tba-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--magenta);box-shadow:0 0 10px var(--magenta);animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+@media(prefers-reduced-motion:reduce){.tba-badge .dot{animation:none}}
+.tba h3{font-size:clamp(24px,3.6vw,38px)}
+.tba p{color:var(--muted);font-size:15.5px;max-width:460px;margin:14px auto 26px}
+
+/* past events */
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px;margin-top:44px}
+.event-cover{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--bg-3)}
+.event-cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.card:hover .event-cover img{transform:scale(1.05)}
+@media(prefers-reduced-motion:reduce){.card:hover .event-cover img{transform:none}}
+.event-tag{position:absolute;top:14px;left:14px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(10,10,15,.65);border:1px solid var(--line-2);backdrop-filter:blur(8px);padding:6px 12px;border-radius:100px}
+.event-tag.hot{background:var(--grad);background-clip:padding-box;border:none;padding:7px 13px}
+.event-body{padding:22px 22px 24px}
+.event-date{font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.05em;text-transform:uppercase}
+.event-body h3{font-size:20px;margin:8px 0 6px}
+.event-meta{color:var(--muted);font-size:14px;display:flex;align-items:center;gap:6px}
+.event-meta svg{width:15px;height:15px;flex:none;color:var(--faint)}
+.event-foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);gap:10px;flex-wrap:wrap}
+.event-guests{font-size:13.5px;font-weight:700;color:var(--ink-2)}
+.event-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:var(--magenta)}
+.event-link svg{width:15px;height:15px;transition:transform .2s}
+.event-link:hover svg{transform:translateX(3px)}
+
+/* projects */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.proj{position:relative;display:flex;flex-direction:column;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 24px 20px;overflow:hidden;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+.proj::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:.85}
+.proj:hover{transform:translateY(-5px);border-color:var(--line-2);box-shadow:var(--card-shadow)}
+@media(prefers-reduced-motion:reduce){.proj:hover{transform:none}}
+.proj .ptag{display:inline-flex;align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:5px 12px;margin-bottom:14px}
+.proj .ptag.win{color:#fff;background:var(--grad);border:none;padding:6px 13px}
+.proj h3{font-size:20px;margin-bottom:8px}
+.proj .pdesc{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+.proj .builders{margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.proj .blabel{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.builder{display:flex;align-items:center;gap:10px;padding:5px 0}
+.builder .bavatar{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:11.5px;font-weight:800;color:#fff;background:var(--grad)}
+.builder .bname{font-size:14px;font-weight:700;color:var(--ink)}
+.builder a.bhandle{font-size:12.5px;font-weight:600;color:var(--cyan)}
+.builder a.bhandle:hover{text-decoration:underline}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.gallery a{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);aspect-ratio:1.45;background:var(--bg-3)}
+.gallery a:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.gallery a:hover{border-color:var(--line-3)}
+.gallery a:hover img{transform:scale(1.06)}
+@media(prefers-reduced-motion:reduce){.gallery a:hover img{transform:none}}
+.gallery .cap{position:absolute;inset:auto 0 0 0;padding:30px 16px 12px;font-size:13px;font-weight:700;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.78))}
+@media(max-width:720px){.gallery{grid-template-columns:repeat(2,1fr)}.gallery a:nth-child(1){grid-column:span 2;grid-row:span 1}}
+
+/* ambassador */
+.amb{display:grid;grid-template-columns:340px 1fr;gap:56px;align-items:center;margin-top:44px}
+@media(max-width:860px){.amb{grid-template-columns:1fr;gap:32px}}
+.amb-photo{position:relative;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line-2)}
+.amb-photo::after{content:"";position:absolute;inset:0;border-radius:var(--r-lg);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.amb-photo img{aspect-ratio:1;object-fit:cover;width:100%}
+.amb-glow{position:absolute;inset:-3px;background:var(--grad);border-radius:28px;filter:blur(26px);opacity:.45;z-index:-1}
+.amb-photo-wrap{position:relative;max-width:340px;margin:0 auto}
+.amb h3{font-size:clamp(24px,3vw,32px)}
+.amb .role{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+.amb p{color:var(--ink-2);font-size:16px;margin:14px 0 0}
+.amb-links{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.amb-links .btn{min-height:44px;padding:10px 20px;font-size:14px}
+
+/* why */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:64px}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+.why{padding:28px;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg)}
+.why .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--glass);border:1px solid var(--line-2);margin-bottom:18px}
+.why .ic svg{width:22px;height:22px;color:var(--cyan)}
+.why:nth-child(2) .ic svg{color:var(--magenta)}
+.why:nth-child(3) .ic svg{color:var(--coral)}
+.why h3{font-size:18px}
+.why p{color:var(--muted);font-size:14.5px;margin:10px 0 0}
+
+/* cta */
+.cta-band{position:relative;text-align:center;padding:88px 24px;border-radius:var(--r-lg);overflow:hidden;background:var(--bg-2);border:1px solid var(--line-2)}
+.cta-band .orb-1{opacity:.4}
+.cta-band .orb-2{opacity:.3}
+.cta-band h2{position:relative;font-size:clamp(28px,4.6vw,48px);z-index:2}
+.cta-band p{position:relative;color:var(--ink-2);max-width:520px;margin:16px auto 0;z-index:2}
+.cta-band .hero-ctas{position:relative;z-index:2}
+
+/* footer */
+footer{position:relative;border-top:1px solid var(--line);padding:44px 0 56px;color:var(--muted);font-size:14px}
+footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--grad);opacity:.55}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{color:var(--muted);font-weight:600;transition:color .2s}
+.foot-links a:hover{color:var(--ink)}
+.foot small{display:block;margin-top:6px;color:var(--faint)}
+
+/* lightbox */
+.lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(5,5,10,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.lightbox.open{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px}
+.lb-img{max-width:92vw;max-height:76vh;border-radius:14px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
+.lb-cap{color:#c2c6d4;font-size:14px;font-weight:600;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;padding:0 16px;text-align:center}
+.lb-cap a{color:#ff2d92;font-weight:700}
+.lb-btn{position:absolute;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:#fff;cursor:pointer;transition:background .2s}
+.lb-btn:hover{background:rgba(255,255,255,.16)}
+.lb-btn svg{width:22px;height:22px}
+.lb-prev{left:18px;top:50%;transform:translateY(-50%)}
+.lb-next{right:18px;top:50%;transform:translateY(-50%)}
+.lb-close{top:18px;right:18px}
+.lb-count{position:absolute;top:26px;left:24px;color:#8a90a3;font-size:13.5px;font-weight:700;letter-spacing:.06em}
+@media(max-width:720px){.lb-prev{left:8px}.lb-next{right:8px}.lb-img{max-height:64vh}}
+
+/* form modal */
+.fmodal{display:none;position:fixed;inset:0;z-index:210;background:rgba(5,5,10,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px}
+.fmodal.open{display:flex}
+.fcard{position:relative;background:var(--bg-2);border:1px solid var(--line-2);border-radius:24px;max-width:540px;width:100%;padding:30px 28px 26px;max-height:92vh;overflow:auto;box-shadow:0 40px 100px -30px rgba(0,0,0,.7)}
+.fcard h3{font-size:24px;margin-bottom:6px}
+.fcard .fsub{color:var(--muted);font-size:14.5px;margin:0 0 20px}
+.fcard label{display:block;font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);margin:0 0 6px 2px}
+.fcard input,.fcard select,.fcard textarea{width:100%;background:var(--bg-3);border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;color:var(--ink);font:inherit;font-size:14.5px;margin-bottom:14px;transition:border-color .2s}
+.fcard input:focus,.fcard select:focus,.fcard textarea:focus{outline:none;border-color:var(--cyan)}
+.fcard textarea{resize:vertical;min-height:96px}
+.fcard .btn{width:100%;margin-top:4px}
+.fclose{position:absolute;top:14px;right:14px;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:var(--glass);color:var(--ink);cursor:pointer}
+.fclose svg{width:18px;height:18px}
+.fmsg{font-size:14px;font-weight:600;margin:12px 0 0;text-align:center}
+.fmsg.err{color:var(--coral)}
+.fmsg.ok{color:#34d399}
+.hp{position:absolute !important;left:-9999px;width:1px;height:1px;opacity:0}
+.fsuccess{text-align:center;padding:30px 6px}
+.fsuccess h3{margin-bottom:10px}
+.fsuccess p{color:var(--muted);font-size:15px;margin:0}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- Cursor cube logo (reusable) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cube" viewBox="0 0 24 24">
+      <polygon points="12,1.5 21.1,6.75 12,12" fill="var(--cube-f1)"/>
+      <polygon points="12,1.5 12,12 2.9,6.75" fill="var(--cube-f2)"/>
+      <polygon points="2.9,6.75 12,12 12,22.5 2.9,17.25" fill="var(--cube-f3)"/>
+      <polygon points="21.1,6.75 21.1,17.25 12,22.5" fill="var(--cube-f4)"/>
+      <polygon points="2.9,6.75 21.1,6.75 12,12" fill="var(--cube-fold)"/>
+      <polygon points="21.1,6.75 12,22.5 12,12" fill="var(--cube-sliver)"/>
+      <polygon points="12,1.5 21.1,6.75 21.1,17.25 12,22.5 2.9,17.25 2.9,6.75" fill="none" stroke="var(--cube-edge)" stroke-width=".7" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <svg class="logo-cube" role="img" aria-label="Cursor Miami logo"><use href="#cube"/></svg>
+      Cursor&nbsp;<span class="sub">Miami</span>
+    </a>
+    <div class="nav-links">
+      <a href="#events">Events</a>
+      <a href="#projects">Projects</a>
+      <a href="#community">Community</a>
+      <a href="https://cursor.com/learn" target="_blank" rel="noopener">Learning Tutorial</a>
+      <a href="#ambassador">Ambassador</a>
+    </div>
+    <a class="btn btn-neon nav-cta" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">
+      Subscribe on Luma
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    </a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch between dark and light theme">
+      <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.4"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+    </button>
+    <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="#events">Events</a>
+  <a href="#projects">Projects</a>
+  <a href="#community">Community</a>
+  <a href="https://cursor.com/learn" target="_blank" rel="noopener">Learning Tutorial</a>
+  <a href="#ambassador">Ambassador</a>
+  <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">Subscribe on Luma</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+  <div class="wrap">
+    <div class="hero-lockup">
+      <svg class="hero-cube" role="img" aria-label="Cursor logo"><use href="#cube"/></svg>
+      <span class="hero-wordmark">Cursor <em>Miami</em></span>
+    </div>
+    <span class="hero-badge"><span class="dot"></span> Official Cursor community · Miami, FL</span>
+    <h1>Build fast.<br /><span class="grad-text">Ship faster.</span></h1>
+    <p class="tagline">Hackathons, meetups and demo nights for builders shipping with AI, from Wynwood to Miami Beach. Powered by Cursor, fueled by cafecito.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-neon" id="nextEventBtn" href="https://luma.com/cursor-miami?period=past" target="_blank" rel="noopener">
+        Join the next event
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#past">See past events</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="num" data-count="1200">0</div><div class="lbl">Community subscribers</div></div>
+      <div class="stat"><div class="num" id="statRsvps" data-count="2200">0</div><div class="lbl">RSVPs &amp; counting</div></div>
+      <div class="stat"><div class="num" id="statEvents" data-count="4">0</div><div class="lbl">Events hosted</div></div>
+      <div class="stat"><div class="num">305</div><div class="lbl">One city. One vibe.</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    <div class="m-track">
+      <span class="w-solid">Hackathons</span><span class="star">✦</span><span class="w-grad">Workshops</span><span class="star">✦</span><span class="w-line">Demos</span><span class="star">✦</span><span class="w-grad">Hackathons</span><span class="star">✦</span><span class="w-line">Workshops</span><span class="star">✦</span><span class="w-solid">Demos</span><span class="star">✦</span>
+    </div>
+    <div class="m-track rev">
+      <span class="w-line">Wynwood</span><span class="star">✦</span><span class="w-solid">Miami Beach</span><span class="star">✦</span><span class="w-grad">The LAB Miami</span><span class="star">✦</span><span class="w-grad">Wynwood</span><span class="star">✦</span><span class="w-line">Miami Beach</span><span class="star">✦</span><span class="w-solid">The LAB Miami</span><span class="star">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- UPCOMING -->
+<section id="events">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h-sec">Next on the <span class="grad-text">calendar</span></h2>
+      <p class="sec-desc">Everything runs through our Luma calendar. RSVP below. New events drop regularly, and they fill up fast: the last hackathon hit 444 RSVPs.</p>
+    </div>
+    <div class="luma-box reveal">
+      <iframe id="lumaFrame" src="https://luma.com/embed/calendar/cal-qV8bjK80kswG3Wy/events?lt=dark" title="Cursor Miami events calendar on Luma" loading="lazy" allowfullscreen style="display:none"></iframe>
+      <div class="tba" id="tbaPanel">
+        <div class="orb orb-1"></div><div class="orb orb-2"></div>
+        <svg class="tba-cube" aria-hidden="true"><use href="#cube"/></svg>
+        <span class="tba-badge"><span class="dot"></span> Next event · TBA</span>
+        <h3>Something big is <span class="grad-text">loading&hellip;</span></h3>
+        <p>The last drop hit 444 RSVPs and the room was full. Location secret, date soon, spots gone fast. Subscribers hear it first.</p>
+        <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">Get first dibs
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAST EVENTS -->
+<section id="past" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h-sec">What you <span class="grad-text">missed</span></h2>
+      <p class="sec-desc">Every event lives on Luma. Tap through for photos, recaps and the guest list.</p>
+    </div>
+    <div class="events-grid">
+
+      <article class="card reveal">
+        <a href="https://luma.com/266e6bm7" target="_blank" rel="noopener" aria-label="Cursor Miami Hackathon on Luma">
+          <div class="event-cover">
+            <img src="assets/hackathon.jpg" onerror="this.onerror=null;this.src='https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=75,width=800,height=500/uploads/rr/bd878e8b-26c7-42a7-a7bc-f400997c60ec.png'" alt="Packed house at the Cursor Miami Hackathon, The LAB Miami" loading="lazy" />
+            <span class="event-tag hot">Hackathon</span>
+          </div>
+        </a>
+        <div class="event-body">
+          <div class="event-date">Jun 4, 2026 · 4:00 PM</div>
+          <h3>Cursor Miami Hackathon</h3>
+          <div class="event-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            The DOCK, Wynwood
+          </div>
+          <div class="event-foot">
+            <span class="event-guests">444 builders</span>
+            <a class="event-link" href="#" id="hackRecap" aria-haspopup="dialog">Recap · 27 photos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <a href="https://luma.com/ilwmna5i" target="_blank" rel="noopener" aria-label="Cafe Cursor Miami on Luma">
+          <div class="event-cover">
+            <img src="assets/cafe-cursor.jpg" alt="Builders hanging out at Cafe Cursor Miami, Lincoln Eatery, Miami Beach" loading="lazy" />
+            <span class="event-tag">Café Cursor</span>
+          </div>
+        </a>
+        <div class="event-body">
+          <div class="event-date">Apr 23, 2026 · 10:30 AM</div>
+          <h3>Cafe Cursor Miami</h3>
+          <div class="event-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            723 Lincoln Ln N, Miami Beach
+          </div>
+          <div class="event-foot">
+            <span class="event-guests">Coffee + code with the Cursor team</span>
+            <a class="event-link" href="#" id="cafeRecap" aria-haspopup="dialog">Recap · 29 photos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <a href="https://luma.com/d8vebanw" target="_blank" rel="noopener" aria-label="Cursor Miami Meetup February on Luma">
+          <div class="event-cover">
+            <img src="assets/meetup-feb.jpg" alt="Cursor Miami branding on the LED wall at the February meetup, The LAB Miami" loading="lazy" />
+            <span class="event-tag">Meetup</span>
+          </div>
+        </a>
+        <div class="event-body">
+          <div class="event-date">Feb 4, 2026 · 6:00 PM</div>
+          <h3>Cursor Miami Meetup</h3>
+          <div class="event-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            The DOCK, Wynwood
+          </div>
+          <div class="event-foot">
+            <span class="event-guests">Talks + demos + networking</span>
+            <a class="event-link" href="https://luma.com/d8vebanw" target="_blank" rel="noopener">Recap
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card reveal">
+        <a href="https://luma.com/3133upkx" target="_blank" rel="noopener" aria-label="Cursor Miami Meetup November on Luma">
+          <div class="event-cover">
+            <img src="assets/meetup-nov.jpg" alt="Full house at the first Cursor Miami Meetup, The LAB Miami" loading="lazy" />
+            <span class="event-tag hot">Meetup · No. 1</span>
+          </div>
+        </a>
+        <div class="event-body">
+          <div class="event-date">Nov 24, 2025 · 6:00 PM</div>
+          <h3>The meetup that started it all</h3>
+          <div class="event-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            The LAB Miami, Wynwood
+          </div>
+          <div class="event-foot">
+            <span class="event-guests">341 attendees</span>
+            <a class="event-link" href="https://luma.com/3133upkx" target="_blank" rel="noopener">Photos &amp; recap
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h-sec">Built at our <span class="grad-text">events</span></h2>
+      <p class="sec-desc">Hackathon winners, demo night standouts, and the builders behind them. Ship something at an event and it lives here, with your name on it.</p>
+    </div>
+    <div class="tba reveal" style="margin-top:40px">
+      <div class="orb orb-1"></div><div class="orb orb-2"></div>
+      <span class="tba-badge"><span class="dot"></span> Projects · Coming soon</span>
+      <h3>Projects are <span class="grad-text">coming soon</span></h3>
+      <p>We're collecting the best builds from our events: hackathon winners, demo night standouts, and the builders behind them. Shipped something at a Cursor Miami event? Claim your spot.</p>
+      <a class="btn btn-neon" href="#" data-form="project">Submit your project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY + WHY -->
+<section id="community">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h-sec">Scenes from the <span class="grad-text">305</span></h2>
+      <p class="sec-desc">Tap any tile to open the event on Luma and browse the full photo album.</p>
+    </div>
+    <div class="gallery reveal">
+      <a href="https://luma.com/266e6bm7" target="_blank" rel="noopener">
+        <img src="assets/hackathon.jpg" onerror="this.onerror=null;this.src='https://images.lumacdn.com/event-social/3x/463e14b1-f852-4fe5-8227-a3cc774c2777.png'" alt="Cursor Miami Hackathon crowd at The LAB Miami" loading="lazy" />
+        <span class="cap">Cursor Miami Hackathon · 444 builders</span>
+      </a>
+      <a href="https://luma.com/266e6bm7" target="_blank" rel="noopener">
+        <img src="assets/gallery-demo.jpg" alt="Live demo on the big screen at the Cursor Miami Hackathon" loading="lazy" />
+        <span class="cap">Demo time · The LAB</span>
+      </a>
+      <a href="https://luma.com/266e6bm7" target="_blank" rel="noopener">
+        <img src="assets/gallery-building.jpg" alt="Builders heads-down at tables during the hackathon" loading="lazy" />
+        <span class="cap">Heads down, shipping</span>
+      </a>
+      <a href="https://luma.com/266e6bm7" target="_blank" rel="noopener">
+        <img src="assets/gallery-selfie.jpg" alt="Crowd selfie at the Cursor Miami Hackathon" loading="lazy" />
+        <span class="cap">The 305 crew</span>
+      </a>
+      <a href="https://luma.com/266e6bm7" target="_blank" rel="noopener">
+        <img src="assets/gallery-crew.jpg" alt="Community members at the Cursor Miami Hackathon" loading="lazy" />
+        <span class="cap">Hackathon weekend</span>
+      </a>
+    </div>
+
+    <div class="why-grid">
+      <div class="why reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+        <h3>Ship something real</h3>
+        <p>Hackathons and build nights where ideas become demos before the cafecito wears off. Bring a laptop, leave with a product.</p>
+      </div>
+      <div class="why reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Meet your co-founder</h3>
+        <p>Founders, engineers, designers and dreamers. 2,200+ RSVPs deep and growing every event. Your next collaborator is already here.</p>
+      </div>
+      <div class="why reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Learn from the source</h3>
+        <p>Live demos of the newest Cursor features, agent workflows and AI-first development, sometimes with the Cursor team in the room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMBASSADOR -->
+<section id="ambassador" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal">
+      <h2 class="h-sec">Meet the <span class="grad-text">ambassador</span></h2>
+    </div>
+    <div class="amb">
+      <div class="amb-photo-wrap reveal">
+        <div class="amb-glow" aria-hidden="true"></div>
+        <div class="amb-photo">
+          <img src="assets/ben.jpg" alt="Ben Milshtein, Cursor Ambassador for Miami" loading="lazy" />
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="role">Cursor Ambassador · Miami</span>
+        <h3>Ben Milshtein</h3>
+        <p>Ben leads the official Cursor community in Miami, bringing together the city's founders, engineers and builders around AI-first development. From the first meetup at The LAB Miami to a 444-person hackathon in Wynwood, he's growing one of the most energetic dev communities in Florida, one event at a time.</p>
+        <p>Co-founder at a stealth startup. Always down to talk agents, demos, and whatever you're building.</p>
+        <div class="amb-links">
+          <a class="btn btn-neon" href="https://www.linkedin.com/in/benmilshtein/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            Connect on LinkedIn
+          </a>
+          <a class="btn btn-ghost" href="https://x.com/benmilshtein" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
+            Follow on X
+          </a>
+          <a class="btn btn-ghost" href="https://luma.com/user/benmilshtein" target="_blank" rel="noopener">Luma profile</a>
+          <a class="btn btn-ghost" href="mailto:ben@cursormiami.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg>
+            Contact me
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div class="orb orb-1"></div><div class="orb orb-2"></div>
+      <h2>Your next build starts <span class="grad-text">here</span></h2>
+      <p>Join 2,200+ builders shipping with AI in Miami. Free to attend. Bring a laptop and an idea.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">
+          Subscribe to our calendar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#" data-form="inquiry">Speak or sponsor</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg class="logo-cube" aria-hidden="true"><use href="#cube"/></svg>
+        <strong style="color:var(--ink)">Cursor Miami</strong>
+      </div>
+      <small>Community-run. Not an official Cursor (Anysphere) website.</small>
+      <small>Made in Miami with Cursor, obviously.</small>
+    </div>
+    <div class="foot-links">
+      <a href="https://luma.com/cursor-miami" target="_blank" rel="noopener">Luma calendar</a>
+      <a href="https://cursor.com" target="_blank" rel="noopener">Cursor</a>
+      <a href="https://www.linkedin.com/in/benmilshtein/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://x.com/benmilshtein" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FORM MODAL -->
+<div class="fmodal" id="fmodal" role="dialog" aria-modal="true" aria-labelledby="fTitle">
+  <div class="fcard">
+    <button class="fclose" id="fClose" aria-label="Close form">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <h3 id="fTitle">Speak or sponsor</h3>
+    <p class="fsub" id="fSub">Tell us a little about you. We read everything and reply fast.</p>
+    <form id="theForm" novalidate>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div id="fInquiryFields">
+        <label for="fItype">I want to</label>
+        <select id="fItype" name="itype">
+          <option value="speaker">Speak at an event</option>
+          <option value="sponsor">Sponsor the community</option>
+          <option value="other">Something else</option>
+        </select>
+        <label for="fCompany">Company / organization</label>
+        <input id="fCompany" name="company" placeholder="Optional" />
+      </div>
+      <div id="fProjectFields" hidden>
+        <label for="fProject">Project name *</label>
+        <input id="fProject" name="project" placeholder="What did you build?" />
+        <label for="fEvent">Built at</label>
+        <select id="fEvent" name="event">
+          <option>Cursor Miami Hackathon · Jun 2026</option>
+          <option>Cafe Cursor Miami · Apr 2026</option>
+          <option>Cursor Miami Meetup · Feb 2026</option>
+          <option>Cursor Miami Meetup · Nov 2025</option>
+          <option>Other / outside an event</option>
+        </select>
+        <label for="fLinks">Links</label>
+        <input id="fLinks" name="links" placeholder="Demo, GitHub, X — anything clickable" />
+      </div>
+      <label for="fName">Your name *</label>
+      <input id="fName" name="name" required placeholder="Full name" />
+      <label for="fEmail">Email *</label>
+      <input id="fEmail" name="email" type="email" required placeholder="you@example.com" />
+      <label for="fMessage" id="fMsgLabel">Message</label>
+      <textarea id="fMessage" name="message" placeholder="The more context, the better."></textarea>
+      <button class="btn btn-neon" type="submit" id="fSend">Send it</button>
+      <p class="fmsg" id="fMsg" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Cafe Cursor Miami photo recap">
+  <span class="lb-count" id="lbCount"></span>
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close gallery">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <img class="lb-img" id="lbImg" src="" alt="Cafe Cursor Miami recap photo" />
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+  <div class="lb-cap"><span id="lbTitle"></span>
+    <a id="lbLuma" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">View event on Luma</a>
+  </div>
+</div>
+
+<script>
+// form modal (speaker/sponsor inquiries + project submissions -> /api/submit -> Airtable)
+const fmodal=document.getElementById('fmodal'),theForm=document.getElementById('theForm'),
+      fTitle=document.getElementById('fTitle'),fSub=document.getElementById('fSub'),
+      fInq=document.getElementById('fInquiryFields'),fProj=document.getElementById('fProjectFields'),
+      fMsgEl=document.getElementById('fMsg'),fSend=document.getElementById('fSend');
+let fMode='inquiry';
+function openForm(mode){
+  fMode=mode;
+  const proj=mode==='project';
+  fInq.hidden=proj;fProj.hidden=!proj;
+  fTitle.textContent=proj?'Submit your project':'Speak or sponsor';
+  fSub.textContent=proj?'Built something at one of our events? Claim your recognition.':'Tell us a little about you. We read everything and reply fast.';
+  fMsgEl.textContent='';fMsgEl.className='fmsg';
+  fmodal.classList.add('open');document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById(proj?'fProject':'fName').focus(),50);
+}
+function closeForm(){fmodal.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('fClose').addEventListener('click',closeForm);
+fmodal.addEventListener('click',e=>{if(e.target===fmodal)closeForm()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fmodal.classList.contains('open'))closeForm()});
+document.querySelectorAll('[data-form]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();openForm(el.dataset.form)}));
+// allow projects.html to deep-link straight into the project form
+if(location.hash==='#submit-project'){openForm('project');history.replaceState(null,'',location.pathname)}
+theForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const fd=new FormData(theForm);
+  const payload={
+    type:fMode==='project'?'project':fd.get('itype'),
+    name:fd.get('name'),email:fd.get('email'),message:fd.get('message'),
+    company:fd.get('company'),project:fd.get('project'),event:fd.get('event'),links:fd.get('links'),
+    website:fd.get('website')
+  };
+  if(!payload.name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email||'')){
+    fMsgEl.textContent='Please add your name and a valid email.';fMsgEl.className='fmsg err';return;
+  }
+  if(fMode==='project'&&!payload.project){
+    fMsgEl.textContent='Please add your project name.';fMsgEl.className='fmsg err';return;
+  }
+  fSend.disabled=true;fSend.textContent='Sending…';
+  try{
+    const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!r.ok)throw 0;
+    theForm.parentElement.innerHTML='<div class="fsuccess"><h3>Got it. You’re in the system.</h3><p>'+(fMode==='project'?'We’ll review your project and reach out before it goes live on the site.':'We’ll get back to you shortly. Thanks for building Miami with us.')+'</p></div>';
+    setTimeout(closeForm,2600);
+  }catch(err){
+    fSend.disabled=false;fSend.textContent='Send it';
+    fMsgEl.innerHTML='Could not send right now. Email us instead: <a href="mailto:ben@cursormiami.com" style="color:var(--cyan)">ben@cursormiami.com</a>';
+    fMsgEl.className='fmsg err';
+  }
+});
+
+// photo recap lightbox (multi-album)
+const albums={
+  cafe:{title:'Cafe Cursor Miami · Apr 23, 2026 · Lincoln Eatery, Miami Beach',luma:'https://luma.com/ilwmna5i',
+        photos:Array.from({length:29},(_,i)=>'assets/cafe/cafe-'+String(i+1).padStart(2,'0')+'.jpg')},
+  hack:{title:'Cursor Miami Hackathon · Jun 4, 2026 · The LAB Miami',luma:'https://luma.com/266e6bm7',
+        photos:Array.from({length:28},(_,i)=>'assets/hack/hack-'+String(i+1).padStart(2,'0')+'.jpg').filter(p=>!p.endsWith('hack-08.jpg'))}
+};
+let lbPhotos=albums.cafe.photos,lbIdx=0;
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCount=document.getElementById('lbCount'),
+      lbTitle=document.getElementById('lbTitle'),lbLuma=document.getElementById('lbLuma');
+function lbShow(i){lbIdx=(i+lbPhotos.length)%lbPhotos.length;lbImg.src=lbPhotos[lbIdx];lbCount.textContent=(lbIdx+1)+' / '+lbPhotos.length;
+  new Image().src=lbPhotos[(lbIdx+1)%lbPhotos.length];new Image().src=lbPhotos[(lbIdx-1+lbPhotos.length)%lbPhotos.length];}
+function lbOpen(key){const a=albums[key];lbPhotos=a.photos;lbTitle.textContent=a.title;lbLuma.href=a.luma;
+  lb.classList.add('open');document.body.style.overflow='hidden';lbShow(0)}
+function lbCloseFn(){lb.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('cafeRecap').addEventListener('click',e=>{e.preventDefault();lbOpen('cafe')});
+document.getElementById('hackRecap').addEventListener('click',e=>{e.preventDefault();lbOpen('hack')});
+document.getElementById('lbClose').addEventListener('click',lbCloseFn);
+document.getElementById('lbPrev').addEventListener('click',()=>lbShow(lbIdx-1));
+document.getElementById('lbNext').addEventListener('click',()=>lbShow(lbIdx+1));
+lb.addEventListener('click',e=>{if(e.target===lb)lbCloseFn()});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')lbCloseFn();else if(e.key==='ArrowLeft')lbShow(lbIdx-1);else if(e.key==='ArrowRight')lbShow(lbIdx+1)});
+
+// theme toggle
+const root=document.documentElement,themeBtn=document.getElementById('themeBtn'),lumaFrame=document.getElementById('lumaFrame'),themeMeta=document.querySelector('meta[name="theme-color"]');
+function applyTheme(t){
+  root.dataset.theme=t;
+  try{localStorage.setItem('cm-theme',t)}catch(e){}
+  themeMeta.setAttribute('content',t==='light'?'#f5f4ef':'#0a0a0f');
+  lumaFrame.src='https://luma.com/embed/calendar/cal-qV8bjK80kswG3Wy/events?lt='+(t==='light'?'light':'dark');
+}
+themeBtn.addEventListener('click',()=>applyTheme(root.dataset.theme==='light'?'dark':'light'));
+// sync luma embed with initial theme (set pre-paint in <head>)
+if(root.dataset.theme==='light')lumaFrame.src='https://luma.com/embed/calendar/cal-qV8bjK80kswG3Wy/events?lt=light';
+
+// Live Luma data. Primary source: our serverless proxy (/api/luma, admin API,
+// works once deployed on Vercel with LUMA_API_KEY set). Fallback: Luma's
+// public calendar endpoint (works everywhere, fewer details).
+(async()=>{
+  const btn=document.getElementById('nextEventBtn');
+  function goLive(url){
+    btn.href=url;
+    document.getElementById('tbaPanel').style.display='none';
+    lumaFrame.style.display='block';
+  }
+  try{
+    const r=await fetch('/api/luma');
+    if(!r.ok)throw 0;
+    const d=await r.json();
+    if(d.upcoming&&d.upcoming.length&&d.upcoming[0].url)goLive(d.upcoming[0].url);
+    if(d.stats){
+      // counters read data-count each frame, so updating mid-animation is safe
+      if(d.stats.totalGuests>0)document.getElementById('statRsvps').dataset.count=d.stats.totalGuests;
+      if(d.stats.events>0)document.getElementById('statEvents').dataset.count=d.stats.events;
+    }
+    return;
+  }catch(e){/* not deployed yet or key missing: fall through */}
+  try{
+    const r=await fetch('https://api.lu.ma/calendar/get-items?calendar_api_id=cal-qV8bjK80kswG3Wy&period=future&pagination_limit=1');
+    const d=await r.json();
+    const ev=d.entries&&d.entries[0]&&d.entries[0].event;
+    if(ev&&ev.url)goLive('https://luma.com/'+ev.url);
+  }catch(e){/* keep TBA teaser */}
+})();
+
+// nav border on scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>8),{passive:true});
+
+// mobile menu
+const burger=document.getElementById('burger'),mmenu=document.getElementById('mmenu');
+burger.addEventListener('click',()=>{const o=mmenu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+function closeMenu(){mmenu.classList.remove('open');burger.setAttribute('aria-expanded','false')}
+mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('click',e=>{if(mmenu.classList.contains('open')&&!mmenu.contains(e.target)&&!burger.contains(e.target))closeMenu()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+addEventListener('resize',()=>{if(innerWidth>920)closeMenu()});
+
+// duplicate marquee content for seamless loop
+document.querySelectorAll('.m-track').forEach(t=>{t.innerHTML+=t.innerHTML});
+
+// highlight active section in nav
+const navAs=Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+const secObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){
+    navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+  }});
+},{rootMargin:'-30% 0px -60% 0px'});
+navAs.forEach(a=>{const s=document.querySelector(a.getAttribute('href'));if(s)secObs.observe(s)});
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// animated counters
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const el=e.target,end=+el.dataset.count;
+  if(reduce){el.textContent=end.toLocaleString('en-US')+'+';return}
+  const t0=performance.now(),dur=1400;
+  // read data-count every frame so live API updates land mid-animation
+  const tick=t=>{const p=Math.min((t-t0)/dur,1),v=Math.round((+el.dataset.count)*(1-Math.pow(1-p,3)));el.textContent=v.toLocaleString('en-US')+(p===1?'+':'');p<1&&requestAnimationFrame(tick)};
+  requestAnimationFrame(tick);
+}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+</script>
+</body>
+</html>

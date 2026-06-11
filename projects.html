@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Projects · Cursor Miami</title>
+<meta name="description" content="Projects built at Cursor Miami events. Hackathon winners, demo night standouts, and the builders behind them." />
+<meta name="theme-color" content="#0a0a0f" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230a0a0f'/%3E%3Cpolygon points='12,2.2 20.5,7.1 12,12' fill='%234a4a54'/%3E%3Cpolygon points='12,2.2 12,12 3.5,7.1' fill='%233a3a44'/%3E%3Cpolygon points='3.5,7.1 12,12 12,21.8 3.5,16.9' fill='%2334343e'/%3E%3Cpolygon points='20.5,7.1 20.5,16.9 12,21.8' fill='%232c2c36'/%3E%3Cpolygon points='3.5,7.1 20.5,7.1 12,12' fill='%23ffffff'/%3E%3Cpolygon points='20.5,7.1 12,21.8 12,12' fill='%23d6d6dd'/%3E%3C/svg%3E" />
+<script>
+(function(){var t=null;try{t=localStorage.getItem('cm-theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+document.documentElement.dataset.theme=t;})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+/* CURSOR MIAMI · Projects subpage (same design system as index.html) */
+:root{
+  --bg:#0a0a0f; --bg-2:#101018; --bg-3:#15151f;
+  --ink:#f5f6fa; --ink-2:#c2c6d4; --muted:#8a90a3; --faint:#5b6072;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14); --line-3:rgba(255,255,255,.3);
+  --glass:rgba(255,255,255,.05); --nav-bg:rgba(10,10,15,.72);
+  --card-shadow:0 24px 60px -28px rgba(0,0,0,.8);
+  --neon-sh:0 8px 26px -12px rgba(255,45,146,.5);
+  --neon-sh-hov:0 12px 34px -12px rgba(255,45,146,.62);
+  --orb-o:.5; --orb-o2:.35;
+  --magenta:#ff2d92; --coral:#ff6b5c; --cyan:#22d3ee; --violet:#8b5cf6;
+  --grad:linear-gradient(100deg,var(--magenta),var(--coral) 38%,var(--violet) 72%,var(--cyan));
+  --maxw:1140px; --r:16px; --r-lg:24px; --ease:cubic-bezier(.22,.61,.36,1);
+  --cube-f1:#4a4a54; --cube-f2:#3a3a44; --cube-f3:#34343e; --cube-f4:#2c2c36;
+  --cube-fold:#ffffff; --cube-sliver:#d6d6dd; --cube-edge:rgba(255,255,255,.16);
+}
+html[data-theme="light"]{
+  --bg:#f5f4ef; --bg-2:#ffffff; --bg-3:#eceae3;
+  --ink:#15161a; --ink-2:#3c4048; --muted:#6b7080; --faint:#9aa0ad;
+  --line:rgba(15,15,25,.09); --line-2:rgba(15,15,25,.16); --line-3:rgba(15,15,25,.34);
+  --glass:rgba(15,15,25,.04); --nav-bg:rgba(245,244,239,.78);
+  --card-shadow:0 24px 60px -30px rgba(20,20,30,.25);
+  --neon-sh:0 6px 18px -10px rgba(255,45,146,.35);
+  --neon-sh-hov:0 10px 26px -10px rgba(255,45,146,.45);
+  --orb-o:.16; --orb-o2:.12;
+  --cube-f1:#494643; --cube-f2:#3a3835; --cube-f3:#2f2d2a; --cube-f4:#262422;
+  --cube-fold:#ffffff; --cube-sliver:#dcdbd8; --cube-edge:rgba(20,18,15,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:rgba(255,45,146,.35)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:64px 0}
+section[id]{scroll-margin-top:86px}
+h1,h2,h3{margin:0;font-weight:800;line-height:1.1;letter-spacing:-.025em}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;min-height:48px;padding:13px 26px;border-radius:100px;border:1px solid transparent;transition:transform .18s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-neon{background:var(--grad);background-clip:padding-box;color:#fff;border:none;padding:14px 27px;box-shadow:var(--neon-sh)}
+.btn-neon:hover{transform:translateY(-2px);box-shadow:var(--neon-sh-hov)}
+.btn-ghost{background:var(--glass);color:var(--ink);border-color:var(--line-2);backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--line-3);transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .25s,background .25s}
+.nav.scrolled{border-bottom-color:var(--line)}
+.nav-inner{display:flex;align-items:center;gap:20px;height:70px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}
+.brand .sub{color:var(--muted);font-weight:600}
+.logo-cube{width:32px;height:32px;flex:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.nav-links{display:flex;align-items:center;gap:28px;margin:0 auto}
+.nav-links a{position:relative;color:var(--ink-2);font-size:14.5px;font-weight:600;transition:color .2s;padding:4px 0}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--ink)}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--grad);border-radius:2px}
+.theme-btn{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:var(--glass);color:var(--ink);cursor:pointer;transition:border-color .2s,transform .18s var(--ease);flex:none}
+.theme-btn:hover{border-color:var(--line-3);transform:translateY(-1px)}
+.theme-btn svg{width:19px;height:19px}
+.theme-btn .ic-sun{display:none}
+html[data-theme="light"] .theme-btn .ic-sun{display:block}
+html[data-theme="light"] .theme-btn .ic-moon{display:none}
+.nav-burger{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:10px;min-width:44px;min-height:44px}
+@media(max-width:920px){.nav-links{display:none}.nav-cta{display:none}.nav-burger{display:block;margin-left:auto}}
+.mobile-menu{display:none;position:fixed;top:78px;left:14px;right:14px;z-index:99;background:var(--bg-2);border:1px solid var(--line-2);border-radius:20px;padding:8px 20px 18px;box-shadow:0 30px 70px -24px rgba(0,0,0,.5)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:15px 4px;font-size:16px;font-weight:600;border-bottom:1px solid var(--line)}
+.mobile-menu a:nth-last-child(2){border-bottom:0}
+.mobile-menu a.btn{display:flex;align-items:center;justify-content:center;width:100%;margin-top:12px;padding:13px 20px;border-bottom:0;box-shadow:none;text-align:center}
+
+/* page hero */
+.phero{position:relative;padding:84px 0 48px;text-align:center;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:var(--orb-o);pointer-events:none;background:radial-gradient(circle closest-side,var(--oc),transparent 72%)}
+.orb-1{--oc:var(--magenta);width:560px;height:560px;top:-260px;left:-180px}
+.orb-2{--oc:var(--cyan);width:520px;height:520px;top:-220px;right:-160px;opacity:var(--orb-o2)}
+.phero .wrap{position:relative;z-index:2}
+.phero h1{font-size:clamp(38px,6vw,64px);font-weight:900}
+.phero p{color:var(--ink-2);font-size:clamp(15.5px,2vw,18px);max-width:640px;margin:18px auto 0}
+.crumb{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:18px}
+.crumb a{color:var(--cyan)}
+
+/* event group */
+.egroup{margin-top:34px}
+.egroup-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.egroup-head h2{font-size:clamp(21px,2.8vw,28px)}
+.egroup-head .when{color:var(--muted);font-size:14px;font-weight:600}
+.egroup-head .elink{color:var(--magenta);font-weight:700;font-size:14px;margin-left:auto}
+
+/* project cards */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.proj{position:relative;display:flex;flex-direction:column;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 24px 20px;overflow:hidden;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+.proj::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:.85}
+.proj:hover{transform:translateY(-5px);border-color:var(--line-2);box-shadow:var(--card-shadow)}
+@media(prefers-reduced-motion:reduce){.proj:hover{transform:none}}
+.proj .ptag{display:inline-flex;align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:5px 12px;margin-bottom:14px}
+.proj .ptag.win{color:#fff;background:var(--grad);border:none;padding:6px 13px}
+.proj h3{font-size:20px;margin-bottom:8px}
+.proj .pdesc{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+.proj .builders{margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.proj .blabel{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+.builder{display:flex;align-items:center;gap:10px;padding:5px 0}
+.builder .bavatar{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:11.5px;font-weight:800;color:#fff;background:var(--grad)}
+.builder .bname{font-size:14px;font-weight:700;color:var(--ink)}
+.builder a.bhandle{font-size:12.5px;font-weight:600;color:var(--cyan)}
+.builder a.bhandle:hover{text-decoration:underline}
+.plinks{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.plinks a{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:8px 16px;min-height:36px;transition:border-color .2s}
+.plinks a:hover{border-color:var(--line-3)}
+.plinks svg{width:14px;height:14px}
+
+/* coming soon panel */
+.tba{position:relative;overflow:hidden;border-radius:var(--r-lg);padding:84px 28px 88px;text-align:center;background:var(--bg-2);border:1px solid var(--line-2)}
+.tba>*{position:relative;z-index:2}
+.tba .orb{position:absolute;z-index:1}
+.tba-badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;margin-bottom:18px}
+.tba-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--magenta);box-shadow:0 0 10px var(--magenta);animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+@media(prefers-reduced-motion:reduce){.tba-badge .dot{animation:none}}
+.tba h2{font-size:clamp(26px,4vw,42px)}
+.tba p{color:var(--muted);font-size:15.5px;max-width:480px;margin:14px auto 26px}
+
+/* footer */
+footer{position:relative;border-top:1px solid var(--line);padding:44px 0 56px;color:var(--muted);font-size:14px;margin-top:40px}
+footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--grad);opacity:.55}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{color:var(--muted);font-weight:600;transition:color .2s}
+.foot-links a:hover{color:var(--ink)}
+.foot small{display:block;margin-top:6px;color:var(--faint)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="cube" viewBox="0 0 24 24">
+      <polygon points="12,1.5 21.1,6.75 12,12" fill="var(--cube-f1)"/>
+      <polygon points="12,1.5 12,12 2.9,6.75" fill="var(--cube-f2)"/>
+      <polygon points="2.9,6.75 12,12 12,22.5 2.9,17.25" fill="var(--cube-f3)"/>
+      <polygon points="21.1,6.75 21.1,17.25 12,22.5" fill="var(--cube-f4)"/>
+      <polygon points="2.9,6.75 21.1,6.75 12,12" fill="var(--cube-fold)"/>
+      <polygon points="21.1,6.75 12,22.5 12,12" fill="var(--cube-sliver)"/>
+      <polygon points="12,1.5 21.1,6.75 21.1,17.25 12,22.5 2.9,17.25 2.9,6.75" fill="none" stroke="var(--cube-edge)" stroke-width=".7" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <svg class="logo-cube" role="img" aria-label="Cursor Miami logo"><use href="#cube"/></svg>
+      Cursor&nbsp;<span class="sub">Miami</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#events">Events</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="index.html#community">Community</a>
+      <a href="https://cursor.com/learn" target="_blank" rel="noopener">Learning Tutorial</a>
+      <a href="index.html#ambassador">Ambassador</a>
+    </div>
+    <a class="btn btn-neon nav-cta" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">
+      Subscribe on Luma
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    </a>
+    <button class="theme-btn" id="themeBtn" aria-label="Switch between dark and light theme">
+      <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.4"/><path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M19.1 4.9l-1.6 1.6M6.5 17.5l-1.6 1.6"/></svg>
+    </button>
+    <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="index.html#events">Events</a>
+  <a href="projects.html">Projects</a>
+  <a href="index.html#community">Community</a>
+  <a href="https://cursor.com/learn" target="_blank" rel="noopener">Learning Tutorial</a>
+  <a href="index.html#ambassador">Ambassador</a>
+  <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">Subscribe on Luma</a>
+</div>
+
+<!-- PAGE HERO -->
+<header class="phero">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div>
+  <div class="wrap">
+    <span class="crumb"><a href="index.html">Home</a> / Projects</span>
+    <h1>Built in the <span class="grad-text">305</span></h1>
+    <p>Every event ends with something real. These are the projects our community shipped, and the builders behind them. Demoed live, built with Cursor, made in Miami.</p>
+  </div>
+</header>
+
+<!-- PROJECTS -->
+<section id="all-projects" style="padding-top:8px">
+  <div class="wrap">
+
+    <!-- ============================================================
+         HOW TO ADD A PROJECT (when you're ready to launch this page)
+         1. Delete the "coming soon" panel below.
+         2. Uncomment the event group template underneath it.
+         3. Copy one <article class="proj"> block per project.
+         4. Update: tag (Winner / Finalist / Demo), title, description.
+         5. Credit every builder: name + link to their X or LinkedIn.
+         6. Optional: Demo / GitHub links in .plinks (delete if none).
+         ============================================================ -->
+
+    <div class="tba reveal">
+      <div class="orb orb-1"></div><div class="orb orb-2"></div>
+      <span class="tba-badge"><span class="dot"></span> Projects · Coming soon</span>
+      <h2>Projects are <span class="grad-text">coming soon</span></h2>
+      <p>We're collecting the best builds from our events: hackathon winners, demo night standouts, and the builders who made them. Every project gets full credit, links and all.</p>
+      <a class="btn btn-neon" href="index.html#submit-project">Submit your project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </div>
+
+    <!-- TEMPLATE (uncomment and edit when launching):
+
+    EVENT: Hackathon
+    <div class="egroup reveal">
+      <div class="egroup-head">
+        <h2>Cursor Miami Hackathon</h2>
+        <span class="when">Jun 4, 2026 · The LAB Miami · 444 builders</span>
+        <a class="elink" href="https://luma.com/266e6bm7" target="_blank" rel="noopener">Event page →</a>
+      </div>
+      <div class="pgrid">
+
+        <article class="proj">
+          <span class="ptag win">Winner</span>
+          <h3>Cafecito Agent</h3>
+          <p class="pdesc">A voice agent that takes your ventanita order in Spanglish, finds the nearest cafecito window, and has your colada waiting. Built end-to-end in one afternoon.</p>
+          <div class="builders">
+            <div class="blabel">Built by</div>
+            <div class="builder"><span class="bavatar">BN</span><span class="bname">Builder Name</span><a class="bhandle" href="https://x.com/" target="_blank" rel="noopener">@handle</a></div>
+            <div class="builder"><span class="bavatar">BN</span><span class="bname">Builder Name</span><a class="bhandle" href="https://x.com/" target="_blank" rel="noopener">@handle</a></div>
+          </div>
+          <div class="plinks">
+            <a href="#" target="_blank" rel="noopener">Live demo</a>
+            <a href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <span class="ptag win">Runner-up</span>
+          <h3>Reef Watch</h3>
+          <p class="pdesc">Live dashboard tracking water temperature and coral-bleaching risk across Biscayne Bay, with AI summaries of NOAA data anyone can read.</p>
+          <div class="builders">
+            <div class="blabel">Built by</div>
+            <div class="builder"><span class="bavatar">BN</span><span class="bname">Builder Name</span><a class="bhandle" href="https://x.com/" target="_blank" rel="noopener">@handle</a></div>
+          </div>
+          <div class="plinks">
+            <a href="#" target="_blank" rel="noopener">Live demo</a>
+            <a href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <span class="ptag">Finalist</span>
+          <h3>305 Transit</h3>
+          <p class="pdesc">An AI commute copilot for Metrorail and the Metromover: tells you when to actually leave, in plain English, based on live headways.</p>
+          <div class="builders">
+            <div class="blabel">Built by</div>
+            <div class="builder"><span class="bavatar">BN</span><span class="bname">Builder Name</span><a class="bhandle" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></div>
+            <div class="builder"><span class="bavatar">BN</span><span class="bname">Builder Name</span><a class="bhandle" href="https://x.com/" target="_blank" rel="noopener">@handle</a></div>
+          </div>
+          <div class="plinks">
+            <a href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    EVENT: February Meetup
+    <div class="egroup reveal">
+      <div class="egroup-head">
+        <h2>Cursor Miami Meetup</h2>
+        <span class="when">Feb 4, 2026 · The DOCK, Wynwood</span>
+        <a class="elink" href="https://luma.com/d8vebanw" target="_blank" rel="noopener">Event page →</a>
+      </div>
+      <div class="pgrid">
+
+        <article class="proj">
+          <span class="ptag">Demo night</span>
+          <h3>Wynwood Walls AR</h3>
+          <p class="pdesc">Point your phone at any Wynwood mural and get the artist, the story, and nearby works, generated and shipped as a PWA in a week of evenings.</p>
+          <div class="builders">
+            <div class="blabel">Built by</div>
+            <div class="builder"><span class="bavatar">BN</span><span class="bname">Builder Name</span><a class="bhandle" href="https://x.com/" target="_blank" rel="noopener">@handle</a></div>
+          </div>
+          <div class="plinks">
+            <a href="#" target="_blank" rel="noopener">Live demo</a>
+          </div>
+        </article>
+
+        <article class="proj">
+          <span class="ptag">Demo night</span>
+          <h3>PromptBeach</h3>
+          <p class="pdesc">A shared prompt library for the community: save, fork and rate the prompts that actually work. Born from a hallway conversation at the meetup.</p>
+          <div class="builders">
+            <div class="blabel">Built by</div>
+            <div class="builder"><span class="bavatar">BN</span><span class="bname">Builder Name</span><a class="bhandle" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></div>
+          </div>
+          <div class="plinks">
+            <a href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    EVENT: First Meetup
+    <div class="egroup reveal">
+      <div class="egroup-head">
+        <h2>Cursor Miami Meetup · No. 1</h2>
+        <span class="when">Nov 24, 2025 · The LAB Miami · 341 attendees</span>
+        <a class="elink" href="https://luma.com/3133upkx" target="_blank" rel="noopener">Event page →</a>
+      </div>
+      <div class="pgrid">
+
+        <article class="proj">
+          <span class="ptag">Demo night</span>
+          <h3>Inbox Triage MIA</h3>
+          <p class="pdesc">An email agent that drafts replies in your voice and archives the noise. The very first live demo in Cursor Miami history.</p>
+          <div class="builders">
+            <div class="blabel">Built by</div>
+            <div class="builder"><span class="bavatar">BN</span><span class="bname">Builder Name</span><a class="bhandle" href="https://x.com/" target="_blank" rel="noopener">@handle</a></div>
+          </div>
+          <div class="plinks">
+            <a href="#" target="_blank" rel="noopener">Live demo</a>
+            <a href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    END TEMPLATE -->
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div style="display:flex;align-items:center;gap:9px">
+        <svg class="logo-cube" aria-hidden="true"><use href="#cube"/></svg>
+        <strong style="color:var(--ink)">Cursor Miami</strong>
+      </div>
+      <small>Community-run. Not an official Cursor (Anysphere) website.</small>
+      <small>Made in Miami with Cursor, obviously.</small>
+    </div>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="https://luma.com/cursor-miami" target="_blank" rel="noopener">Luma calendar</a>
+      <a href="https://cursor.com" target="_blank" rel="noopener">Cursor</a>
+      <a href="https://www.linkedin.com/in/benmilshtein/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://x.com/benmilshtein" target="_blank" rel="noopener">X</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// theme toggle (shared key with index.html)
+const root=document.documentElement,themeBtn=document.getElementById('themeBtn'),themeMeta=document.querySelector('meta[name="theme-color"]');
+themeBtn.addEventListener('click',()=>{
+  const t=root.dataset.theme==='light'?'dark':'light';
+  root.dataset.theme=t;
+  try{localStorage.setItem('cm-theme',t)}catch(e){}
+  themeMeta.setAttribute('content',t==='light'?'#f5f4ef':'#0a0a0f');
+});
+
+// nav border on scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>8),{passive:true});
+
+// mobile menu
+const burger=document.getElementById('burger'),mmenu=document.getElementById('mmenu');
+function closeMenu(){mmenu.classList.remove('open');burger.setAttribute('aria-expanded','false')}
+burger.addEventListener('click',()=>{const o=mmenu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('click',e=>{if(mmenu.classList.contains('open')&&!mmenu.contains(e.target)&&!burger.contains(e.target))closeMenu()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+addEventListener('resize',()=>{if(innerWidth>920)closeMenu()});
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
