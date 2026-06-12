@@ -124,11 +124,8 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 .orb-2{--oc:var(--cyan);width:600px;height:600px;bottom:-320px;right:-180px;opacity:var(--orb-o2)}
 .orb-3{--oc:var(--violet);width:460px;height:460px;top:26%;right:14%;opacity:var(--orb-o3)}
 .hero .wrap{position:relative;z-index:2}
-.hero-badge{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:linear-gradient(var(--bg-2),var(--bg-2)) padding-box,var(--grad) border-box;border:1px solid transparent;border-radius:100px;padding:9px 20px;box-shadow:0 8px 28px -12px rgba(255,45,146,.45),0 4px 18px -10px rgba(34,211,238,.4)}
-.hero-badge .dot{position:relative;width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 12px #34d399;flex:none}
-.hero-badge .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1.5px solid #34d399;animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
-@keyframes ping{0%{transform:scale(.55);opacity:.9}80%,100%{transform:scale(1.5);opacity:0}}
-@media(prefers-reduced-motion:reduce){.hero-badge .dot::after{animation:none;display:none}}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:9px 18px;backdrop-filter:blur(8px)}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:#34d399;flex:none}
 .hero h1{font-size:clamp(42px,7.4vw,86px);font-weight:900;margin:26px auto 0;max-width:900px}
 .hero .tagline{color:var(--ink-2);font-size:clamp(16px,2.2vw,20px);max-width:640px;margin:22px auto 0}
 .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
@@ -145,11 +142,10 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 @keyframes scroll-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @media(prefers-reduced-motion:reduce){.m-track,.m-track.rev{animation:none}}
 .m-track span{font-size:clamp(20px,3.2vw,32px);font-weight:900;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;padding:0 18px;line-height:1.35}
-.m-track .w-grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.m-track .w-grad{color:var(--coral)}
 .m-track .w-solid{color:var(--ink)}
-.m-track .w-line{color:transparent;-webkit-text-stroke:1.4px var(--faint)}
-.m-track .star{font-weight:400;color:var(--magenta);padding:0;font-size:.72em}
-.m-track.rev .star{color:var(--cyan)}
+.m-track .w-line{color:var(--muted)}
+.m-track .star{font-weight:800;color:var(--faint);padding:0;font-size:.8em}
 
 /* cards */
 .card{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
@@ -166,10 +162,8 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 .tba-cube{width:64px;height:64px;margin:0 auto 18px;display:block;filter:var(--cube-glow);animation:bob 3.2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @media(prefers-reduced-motion:reduce){.tba-cube{animation:none}}
-.tba-badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;margin-bottom:18px}
-.tba-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--magenta);box-shadow:0 0 10px var(--magenta);animation:blink 1.6s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-@media(prefers-reduced-motion:reduce){.tba-badge .dot{animation:none}}
+.tba-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;margin-bottom:18px}
+.tba-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--magenta)}
 .tba h3{font-size:clamp(24px,3.6vw,38px)}
 .tba p{color:var(--muted);font-size:15.5px;max-width:460px;margin:14px auto 26px}
 
@@ -180,7 +174,7 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 .card:hover .event-cover img{transform:scale(1.05)}
 @media(prefers-reduced-motion:reduce){.card:hover .event-cover img{transform:none}}
 .event-tag{position:absolute;top:14px;left:14px;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(10,10,15,.65);border:1px solid var(--line-2);backdrop-filter:blur(8px);padding:6px 12px;border-radius:100px}
-.event-tag.hot{background:var(--grad);background-clip:padding-box;border:none;padding:7px 13px}
+.event-tag.hot{background:rgba(10,10,15,.65)}
 .event-body{padding:22px 22px 24px}
 .event-date{font-size:13px;font-weight:700;color:var(--cyan);letter-spacing:.05em;text-transform:uppercase}
 .event-body h3{font-size:20px;margin:8px 0 6px}
@@ -256,7 +250,7 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 
 /* footer */
 footer{position:relative;border-top:1px solid var(--line);padding:44px 0 56px;color:var(--muted);font-size:14px}
-footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--grad);opacity:.55}
+footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--grad);opacity:.35}
 .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .foot-links{display:flex;gap:22px;flex-wrap:wrap}
 .foot-links a{color:var(--muted);font-weight:600;transition:color .2s}
@@ -389,10 +383,10 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 <div class="marquee" aria-hidden="true">
   <div class="marquee-inner">
     <div class="m-track">
-      <span class="w-solid">Hackathons</span><span class="star">✦</span><span class="w-grad">Workshops</span><span class="star">✦</span><span class="w-line">Demos</span><span class="star">✦</span><span class="w-grad">Hackathons</span><span class="star">✦</span><span class="w-line">Workshops</span><span class="star">✦</span><span class="w-solid">Demos</span><span class="star">✦</span>
+      <span class="w-solid">Hackathons</span><span class="star">·</span><span class="w-grad">Workshops</span><span class="star">·</span><span class="w-line">Demos</span><span class="star">·</span><span class="w-grad">Hackathons</span><span class="star">·</span><span class="w-line">Workshops</span><span class="star">·</span><span class="w-solid">Demos</span><span class="star">·</span>
     </div>
     <div class="m-track rev">
-      <span class="w-line">Wynwood</span><span class="star">✦</span><span class="w-solid">Miami Beach</span><span class="star">✦</span><span class="w-grad">The LAB Miami</span><span class="star">✦</span><span class="w-grad">Wynwood</span><span class="star">✦</span><span class="w-line">Miami Beach</span><span class="star">✦</span><span class="w-solid">The LAB Miami</span><span class="star">✦</span>
+      <span class="w-line">Wynwood</span><span class="star">·</span><span class="w-solid">Miami Beach</span><span class="star">·</span><span class="w-grad">The LAB Miami</span><span class="star">·</span><span class="w-grad">Wynwood</span><span class="star">·</span><span class="w-line">Miami Beach</span><span class="star">·</span><span class="w-solid">The LAB Miami</span><span class="star">·</span>
     </div>
   </div>
 </div>
@@ -401,7 +395,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 <section id="events">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="h-sec">Next on the <span class="grad-text">calendar</span></h2>
+      <h2 class="h-sec">Next on the calendar</h2>
       <p class="sec-desc">Everything runs through our Luma calendar. RSVP below. New events drop regularly, and they fill up fast: the last hackathon hit 444 RSVPs.</p>
     </div>
     <div class="luma-box reveal">
@@ -410,7 +404,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
         <div class="orb orb-1"></div><div class="orb orb-2"></div>
         <svg class="tba-cube" aria-hidden="true"><use href="#cube"/></svg>
         <span class="tba-badge"><span class="dot"></span> Next event · TBA</span>
-        <h3>Something big is <span class="grad-text">loading&hellip;</span></h3>
+        <h3>Something big is loading&hellip;</h3>
         <p>The last drop hit 444 RSVPs and the room was full. Location secret, date soon, spots gone fast. Subscribers hear it first.</p>
         <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">Get first dibs
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
@@ -424,7 +418,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 <section id="past" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="h-sec">What you <span class="grad-text">missed</span></h2>
+      <h2 class="h-sec">What you missed</h2>
       <p class="sec-desc">Every event lives on Luma. Tap through for photos, recaps and the guest list.</p>
     </div>
     <div class="events-grid">
@@ -529,13 +523,13 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 <section id="projects">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="h-sec">Built at our <span class="grad-text">events</span></h2>
+      <h2 class="h-sec">Built at our events</h2>
       <p class="sec-desc">Hackathon winners, demo night standouts, and the builders behind them. Ship something at an event and it lives here, with your name on it.</p>
     </div>
     <div class="tba reveal" style="margin-top:40px">
       <div class="orb orb-1"></div><div class="orb orb-2"></div>
       <span class="tba-badge"><span class="dot"></span> Projects · Coming soon</span>
-      <h3>Projects are <span class="grad-text">coming soon</span></h3>
+      <h3>Projects are coming soon</h3>
       <p>We're collecting the best builds from our events: hackathon winners, demo night standouts, and the builders behind them. Shipped something at a Cursor Miami event? Claim your spot.</p>
       <a class="btn btn-neon" href="#" data-form="project">Submit your project
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
@@ -548,7 +542,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 <section id="community">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="h-sec">Scenes from the <span class="grad-text">305</span></h2>
+      <h2 class="h-sec">Scenes from the 305</h2>
       <p class="sec-desc">Tap any tile to open the event on Luma and browse the full photo album.</p>
     </div>
     <div class="gallery reveal">
@@ -598,7 +592,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 <section id="ambassador" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="reveal">
-      <h2 class="h-sec">Meet the <span class="grad-text">ambassador</span></h2>
+      <h2 class="h-sec">Meet the ambassador</h2>
     </div>
     <div class="amb">
       <div class="amb-photo-wrap reveal">
@@ -637,7 +631,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
   <div class="wrap">
     <div class="cta-band reveal">
       <div class="orb orb-1"></div><div class="orb orb-2"></div>
-      <h2>Your next build starts <span class="grad-text">here</span></h2>
+      <h2>Your next build starts here</h2>
       <p>Join 2,200+ builders shipping with AI in Miami. Free to attend. Bring a laptop and an idea.</p>
       <div class="hero-ctas">
         <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">

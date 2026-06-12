@@ -135,16 +135,14 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 .tba{position:relative;overflow:hidden;border-radius:var(--r-lg);padding:84px 28px 88px;text-align:center;background:var(--bg-2);border:1px solid var(--line-2)}
 .tba>*{position:relative;z-index:2}
 .tba .orb{position:absolute;z-index:1}
-.tba-badge{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;margin-bottom:18px}
-.tba-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--magenta);box-shadow:0 0 10px var(--magenta);animation:blink 1.6s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-@media(prefers-reduced-motion:reduce){.tba-badge .dot{animation:none}}
+.tba-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;margin-bottom:18px}
+.tba-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--magenta)}
 .tba h2{font-size:clamp(26px,4vw,42px)}
 .tba p{color:var(--muted);font-size:15.5px;max-width:480px;margin:14px auto 26px}
 
 /* footer */
 footer{position:relative;border-top:1px solid var(--line);padding:44px 0 56px;color:var(--muted);font-size:14px;margin-top:40px}
-footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--grad);opacity:.55}
+footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--grad);opacity:.35}
 .foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .foot-links{display:flex;gap:22px;flex-wrap:wrap}
 .foot-links a{color:var(--muted);font-weight:600;transition:color .2s}
@@ -213,7 +211,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
   <div class="orb orb-1"></div><div class="orb orb-2"></div>
   <div class="wrap">
     <span class="crumb"><a href="index.html">Home</a> / Projects</span>
-    <h1>Built in the <span class="grad-text">305</span></h1>
+    <h1>Built in the 305</h1>
     <p>Every event ends with something real. These are the projects our community shipped, and the builders behind them. Demoed live, built with Cursor, made in Miami.</p>
   </div>
 </header>
@@ -235,7 +233,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
     <div class="tba reveal">
       <div class="orb orb-1"></div><div class="orb orb-2"></div>
       <span class="tba-badge"><span class="dot"></span> Projects · Coming soon</span>
-      <h2>Projects are <span class="grad-text">coming soon</span></h2>
+      <h2>Projects are coming soon</h2>
       <p>We're collecting the best builds from our events: hackathon winners, demo night standouts, and the builders who made them. Every project gets full credit, links and all.</p>
       <a class="btn btn-neon" href="index.html#submit-project">Submit your project
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
