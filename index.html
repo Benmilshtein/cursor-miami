@@ -134,8 +134,8 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 .orb-2{--oc:var(--cyan);width:600px;height:600px;bottom:-320px;right:-180px;opacity:var(--orb-o2)}
 .orb-3{--oc:var(--violet);width:460px;height:460px;top:26%;right:14%;opacity:var(--orb-o3)}
 .hero .wrap{position:relative;z-index:2}
-.hero-badge{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:9px 18px;backdrop-filter:blur(8px)}
-.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:#34d399;flex:none}
+.eyebrow{font-family:'Space Grotesk','Inter',sans-serif;font-size:15.5px;font-weight:500;color:var(--muted);margin:0}
+.eyebrow b{font-weight:600;color:var(--ink-2)}
 .hero h1{font-size:clamp(42px,7.4vw,86px);font-weight:900;margin:26px auto 0;max-width:900px}
 .hero .tagline{color:var(--ink-2);font-size:clamp(16px,2.2vw,20px);max-width:640px;margin:22px auto 0}
 .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
@@ -172,8 +172,7 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 .tba-cube{width:64px;height:64px;margin:0 auto 18px;display:block;filter:var(--cube-glow);animation:bob 3.2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @media(prefers-reduced-motion:reduce){.tba-cube{animation:none}}
-.tba-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);background:var(--glass);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px;margin-bottom:18px}
-.tba-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--magenta)}
+.tba-label{display:block;font-family:'Space Grotesk','Inter',sans-serif;font-size:14px;font-weight:500;color:var(--muted);margin-bottom:8px}
 .tba h3{font-size:clamp(24px,3.6vw,38px)}
 .tba p{color:var(--muted);font-size:15.5px;max-width:460px;margin:14px auto 26px}
 
@@ -375,7 +374,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <svg class="hero-cube" role="img" aria-label="Cursor logo"><use href="#cube"/></svg>
       <span class="hero-wordmark">Cursor <em>Miami</em></span>
     </div>
-    <span class="hero-badge"><span class="dot"></span> Official Cursor community · Miami, FL</span>
+    <p class="eyebrow">The official Cursor community in <b>Miami</b></p>
     <h1>Build fast.<br /><span class="grad-text">Ship faster.</span></h1>
     <p class="tagline">Hackathons, meetups and demo nights for builders shipping with AI, from Wynwood to Miami Beach. Powered by Cursor, fueled by cafecito.</p>
     <div class="hero-ctas">
@@ -418,7 +417,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <div class="tba" id="tbaPanel">
         <div class="orb orb-1"></div><div class="orb orb-2"></div>
         <svg class="tba-cube" aria-hidden="true"><use href="#cube"/></svg>
-        <span class="tba-badge"><span class="dot"></span> Next event · TBA</span>
+        <span class="tba-label">Next event</span>
         <h3>Something big is loading&hellip;</h3>
         <p>The last drop hit 444 RSVPs and the room was full. Location secret, date soon, spots gone fast. Subscribers hear it first.</p>
         <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">Get first dibs
