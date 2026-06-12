@@ -102,12 +102,15 @@ h1,h2,h3{margin:0;font-family:'Space Grotesk','Inter',sans-serif;font-weight:700
 .nav-inner{display:flex;align-items:center;gap:20px;height:70px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}
 .brand img{width:32px;height:32px;border-radius:9px}
-.brand .sub{color:var(--muted);font-weight:600}
+.brand-txt{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+.brand-txt em{font-style:normal;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .nav-links{display:flex;align-items:center;gap:28px;margin:0 auto}
 .nav-links a{position:relative;color:var(--ink-2);font-size:14.5px;font-weight:600;transition:color .2s;padding:4px 0}
 .nav-links a:hover{color:var(--ink)}
 .nav-links a.active{color:var(--ink)}
 .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--grad);border-radius:2px}
+.nav-cta{min-height:38px;padding:9px 18px;font-size:13.5px}
+.nav-cta svg{width:15px;height:15px}
 .nav-burger{display:none;background:none;border:0;color:var(--ink);cursor:pointer;padding:10px;min-width:44px;min-height:44px}
 .theme-btn{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-2);background:var(--glass);color:var(--ink);cursor:pointer;transition:border-color .2s,transform .18s var(--ease);flex:none}
 .theme-btn:hover{border-color:var(--line-3);transform:translateY(-1px)}
@@ -115,6 +118,8 @@ h1,h2,h3{margin:0;font-family:'Space Grotesk','Inter',sans-serif;font-weight:700
 .theme-btn .ic-sun{display:none}
 html[data-theme="light"] .theme-btn .ic-sun{display:block}
 html[data-theme="light"] .theme-btn .ic-moon{display:none}
+.nav-cta{font-size:13px;min-height:38px;padding:9px 18px}
+.nav-cta svg{width:15px;height:15px}
 @media(max-width:920px){.nav-links{display:none}.nav-cta{display:none}.nav-burger{display:block;margin-left:auto}}
 .mobile-menu{display:none;position:fixed;top:78px;left:14px;right:14px;z-index:99;background:var(--bg-2);border:1px solid var(--line-2);border-radius:20px;padding:8px 20px 18px;box-shadow:0 30px 70px -24px rgba(0,0,0,.5)}
 .mobile-menu.open{display:block}
@@ -331,7 +336,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
   <div class="wrap nav-inner">
     <a class="brand" href="#top">
       <svg class="logo-cube" role="img" aria-label="Cursor Miami logo"><use href="#cube"/></svg>
-      Cursor&nbsp;<span class="sub">Miami</span>
+      <span class="brand-txt">Cursor <em>Miami</em></span>
     </a>
     <div class="nav-links">
       <a href="#events">Events</a>
@@ -624,7 +629,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
           </a>
           <a class="btn btn-ghost" href="mailto:ben@cursormiami.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg>
-            Contact me
+            Let's talk
           </a>
         </div>
       </div>
