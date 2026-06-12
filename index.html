@@ -228,6 +228,10 @@ html[data-theme="light"] .theme-btn:active .tt-thumb{transform:translateX(30px) 
 .proj-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 28px;margin-top:36px}
 .proj-strip p{margin:0;color:var(--muted);font-size:15.5px;flex:1;min-width:260px}
 .proj-strip strong{color:var(--ink)}
+.lab-mark{display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--ink-2);flex:none;padding:2px 6px;transition:color .2s}
+.lab-mark:hover{color:var(--ink)}
+.lab-mark svg{width:64px;height:26px}
+.lab-mark span{font-family:'Space Grotesk','Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap}
 
 /* gallery */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
@@ -676,6 +680,15 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <p><strong>The LAB Miami</strong> is our home base: the Wynwood campus where the city's most relentless founders and engineers build, and where most of our events happen.</p>
       <a class="btn btn-ghost" href="https://www.thelabmiami.com" target="_blank" rel="noopener">Visit The LAB
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+      <a class="lab-mark" href="https://www.thelabmiami.com" target="_blank" rel="noopener" aria-label="The LAB Miami">
+        <svg viewBox="0 0 96 38" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2" y="2" width="24" height="24"/>
+          <path d="M48 2 60 26H36z"/>
+          <rect x="70" y="2" width="24" height="24"/>
+          <path d="M70 14h24"/>
+        </svg>
+        <span>The LAB Miami</span>
       </a>
     </div>
   </div>
