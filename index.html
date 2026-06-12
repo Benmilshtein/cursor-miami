@@ -9,8 +9,8 @@
 <meta property="og:title" content="Cursor Miami: The 305's AI Coding Community" />
 <meta property="og:description" content="2,200+ RSVPs. Hackathons, meetups & demo nights in Wynwood and Miami Beach. Subscribe on Luma." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://images.lumacdn.com/event-social/3x/463e14b1-f852-4fe5-8227-a3cc774c2777.png" />
-<meta property="og:url" content="https://luma.com/cursor-miami" />
+<meta property="og:image" content="https://cursor-miami.vercel.app/assets/hackathon.jpg" />
+<meta property="og:url" content="https://cursor-miami.vercel.app" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230a0a0f'/%3E%3Cpolygon points='12,2.2 20.5,7.1 12,12' fill='%234a4a54'/%3E%3Cpolygon points='12,2.2 12,12 3.5,7.1' fill='%233a3a44'/%3E%3Cpolygon points='3.5,7.1 12,12 12,21.8 3.5,16.9' fill='%2334343e'/%3E%3Cpolygon points='20.5,7.1 20.5,16.9 12,21.8' fill='%232c2c36'/%3E%3Cpolygon points='3.5,7.1 20.5,7.1 12,12' fill='%23ffffff'/%3E%3Cpolygon points='20.5,7.1 12,21.8 12,12' fill='%23d6d6dd'/%3E%3C/svg%3E" />
 <script>
@@ -21,7 +21,7 @@ document.documentElement.dataset.theme=t;})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
 /* ============================================================
    CURSOR MIAMI · Miami neon dark · Inter · self-contained
@@ -35,8 +35,11 @@ document.documentElement.dataset.theme=t;})();
   --neon-sh:0 8px 26px -12px rgba(255,45,146,.5);
   --neon-sh-hov:0 12px 34px -12px rgba(255,45,146,.62);
   --orb-o:.5; --orb-o2:.35; --orb-o3:.28;
-  --magenta:#ff2d92; --coral:#ff6b5c; --cyan:#22d3ee; --violet:#8b5cf6;
-  --grad:linear-gradient(100deg,var(--magenta),var(--coral) 38%,var(--violet) 72%,var(--cyan));
+  /* Miami Vice palette: flamingo magenta -> sunset coral -> ocean teal (no violet) */
+  --magenta:#ff2d92; --coral:#ff6b5c; --cyan:#10d6c2; --violet:#ff8a3d;
+  --grad:linear-gradient(100deg,var(--magenta),var(--coral) 52%,var(--cyan));
+  /* deeper stops for button fills so white 15px text passes 4.5:1 */
+  --grad-btn:linear-gradient(100deg,#d61377,#d6402f 52%,#088577);
   --maxw:1140px; --r:16px; --r-lg:24px;
   --ease:cubic-bezier(.22,.61,.36,1);
   /* cursor cube, dark-bg variant (original icon) */
@@ -53,6 +56,7 @@ html[data-theme="light"]{
   --neon-sh:0 6px 18px -10px rgba(255,45,146,.35);
   --neon-sh-hov:0 10px 26px -10px rgba(255,45,146,.45);
   --orb-o:.16; --orb-o2:.12; --orb-o3:.1;
+  --cyan:#0a9c8e; /* darker teal so accents pass contrast on cream */
   /* cursor cube, light-bg variant (original icon) */
   --cube-f1:#494643; --cube-f2:#3a3835; --cube-f3:#2f2d2a; --cube-f4:#262422;
   --cube-fold:#ffffff; --cube-sliver:#dcdbd8; --cube-edge:rgba(20,18,15,.18);
@@ -70,7 +74,8 @@ img{max-width:100%;display:block}
 section{padding:88px 0}
 section[id],header[id]{scroll-margin-top:86px}
 @media(max-width:720px){section{padding:60px 0}}
-h1,h2,h3{margin:0;font-weight:800;line-height:1.1;letter-spacing:-.025em}
+h1,h2,h3{margin:0;font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;line-height:1.1;letter-spacing:-.02em}
+.stat .num,.hero-wordmark,.m-track span{font-family:'Space Grotesk','Inter',sans-serif}
 .h-sec{font-size:clamp(28px,4.2vw,44px);margin:12px 0 0}
 .sec-desc{color:var(--muted);font-size:16px;max-width:600px;margin-top:14px}
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -78,7 +83,7 @@ h1,h2,h3{margin:0;font-weight:800;line-height:1.1;letter-spacing:-.025em}
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;min-height:48px;padding:13px 26px;border-radius:100px;border:1px solid transparent;transition:transform .18s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
 .btn svg{width:18px;height:18px;flex:none}
-.btn-neon{background:var(--grad);background-clip:padding-box;color:#fff;border:none;padding:14px 27px;box-shadow:var(--neon-sh)}
+.btn-neon{background:var(--grad-btn);background-clip:padding-box;color:#fff;border:none;padding:14px 27px;box-shadow:var(--neon-sh)}
 .btn-neon:hover{transform:translateY(-2px);box-shadow:var(--neon-sh-hov)}
 .btn-ghost{background:var(--glass);color:var(--ink);border-color:var(--line-2);backdrop-filter:blur(8px)}
 .btn-ghost:hover{border-color:var(--line-3);transform:translateY(-2px)}
@@ -203,6 +208,11 @@ html[data-theme="light"] .theme-btn .ic-moon{display:none}
 .builder .bname{font-size:14px;font-weight:700;color:var(--ink)}
 .builder a.bhandle{font-size:12.5px;font-weight:600;color:var(--cyan)}
 .builder a.bhandle:hover{text-decoration:underline}
+
+/* projects strip (compact until real projects launch) */
+.proj-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 28px;margin-top:36px}
+.proj-strip p{margin:0;color:var(--muted);font-size:15.5px;flex:1;min-width:260px}
+.proj-strip strong{color:var(--ink)}
 
 /* gallery */
 .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
@@ -526,13 +536,10 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <h2 class="h-sec">Built at our events</h2>
       <p class="sec-desc">Hackathon winners, demo night standouts, and the builders behind them. Ship something at an event and it lives here, with your name on it.</p>
     </div>
-    <div class="tba reveal" style="margin-top:40px">
-      <div class="orb orb-1"></div><div class="orb orb-2"></div>
-      <span class="tba-badge"><span class="dot"></span> Projects · Coming soon</span>
-      <h3>Projects are coming soon</h3>
-      <p>We're collecting the best builds from our events: hackathon winners, demo night standouts, and the builders behind them. Shipped something at a Cursor Miami event? Claim your spot.</p>
-      <a class="btn btn-neon" href="#" data-form="project">Submit your project
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+    <div class="proj-strip reveal">
+      <p><strong>First builds drop soon.</strong> Shipped something at a Cursor Miami event? Claim your spot, full credit included.</p>
+      <a class="btn btn-ghost" href="#" data-form="project">Submit your project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
       </a>
     </div>
   </div>
@@ -582,7 +589,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <div class="why reveal">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
         <h3>Learn from the source</h3>
-        <p>Live demos of the newest Cursor features, agent workflows and AI-first development, sometimes with the Cursor team in the room.</p>
+        <p>Live demos of the newest Cursor features, agent workflows and AI-first development, sometimes with the Cursor team in the room. Plus the part most communities skip: shipping AI that's actually secure.</p>
       </div>
     </div>
   </div>
@@ -604,8 +611,8 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <div class="reveal">
         <span class="role">Cursor Ambassador · Miami</span>
         <h3>Ben Milshtein</h3>
-        <p>Ben leads the official Cursor community in Miami, bringing together the city's founders, engineers and builders around AI-first development. From the first meetup at The LAB Miami to a 444-person hackathon in Wynwood, he's growing one of the most energetic dev communities in Florida, one event at a time.</p>
-        <p>Co-founder at a stealth startup. Always down to talk agents, demos, and whatever you're building.</p>
+        <p>Ben is an ex-Microsoft engineer with a background in cybersecurity and AI, and a startup co-founder. As Cursor Ambassador, he leads the official Miami community, bringing the city's founders and engineers together around AI-first development.</p>
+        <p>His thing: making Miami the city that builds with AI fast and ships it secure. Bring your demo, your half-broken agent, or just your questions. The door's open.</p>
         <div class="amb-links">
           <a class="btn btn-neon" href="https://www.linkedin.com/in/benmilshtein/" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
@@ -615,7 +622,6 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg>
             Follow on X
           </a>
-          <a class="btn btn-ghost" href="https://luma.com/user/benmilshtein" target="_blank" rel="noopener">Luma profile</a>
           <a class="btn btn-ghost" href="mailto:ben@cursormiami.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg>
             Contact me
