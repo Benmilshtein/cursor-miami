@@ -82,7 +82,10 @@ h1,h2,h3{margin:0;font-family:'Space Grotesk','Inter',sans-serif;font-weight:700
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* buttons */
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;letter-spacing:.01em;min-height:48px;padding:13px 26px;border-radius:100px;border:1px solid transparent;white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:transform .22s var(--ease-spring),box-shadow .3s,background-color .2s,border-color .2s,background-position .5s var(--ease)}
+/* signature shape: opposite corners rounded/sharp, echoing the cube's fold; corners swap on hover */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;letter-spacing:.01em;min-height:48px;padding:13px 26px;border-radius:18px 6px 18px 6px;border:1px solid transparent;white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:transform .22s var(--ease-spring),border-radius .3s var(--ease),box-shadow .3s,background-color .2s,border-color .2s,background-position .5s var(--ease)}
+.btn:hover{border-radius:6px 18px 6px 18px}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{border-radius:18px 6px 18px 6px}}
 .btn:active{transform:translateY(0) scale(.97);transition-duration:.08s}
 .btn svg{width:18px;height:18px;flex:none}
 /* arrows nudge along their direction of travel; logos stay put */

@@ -61,7 +61,10 @@ section{padding:64px 0}
 section[id]{scroll-margin-top:86px}
 h1,h2,h3{margin:0;font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;line-height:1.1;letter-spacing:-.02em}
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;min-height:48px;padding:13px 26px;border-radius:100px;border:1px solid transparent;transition:transform .18s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
+/* signature shape: opposite corners rounded/sharp, echoing the cube's fold; corners swap on hover */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;min-height:48px;padding:13px 26px;border-radius:18px 6px 18px 6px;border:1px solid transparent;transition:transform .18s var(--ease),border-radius .3s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
+.btn:hover{border-radius:6px 18px 6px 18px}
+@media(prefers-reduced-motion:reduce){.btn:hover{border-radius:18px 6px 18px 6px}}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-neon{background:var(--grad-btn);background-clip:padding-box;color:#fff;border:none;padding:14px 27px;box-shadow:var(--neon-sh)}
 .btn-neon:hover{transform:translateY(-2px);box-shadow:var(--neon-sh-hov)}
