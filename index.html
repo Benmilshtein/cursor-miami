@@ -115,9 +115,8 @@ h1,h2,h3{margin:0;font-family:'Space Grotesk','Inter',sans-serif;font-weight:700
 html[data-theme="light"] .hero-wordmark::before{background:linear-gradient(90deg,transparent,rgba(214,19,119,.45))}
 html[data-theme="light"] .hero-wordmark::after{background:linear-gradient(90deg,rgba(8,133,119,.45),transparent)}
 @keyframes wm-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.hero-coords{font-family:'Space Grotesk','Inter',sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:var(--faint);font-variant-numeric:tabular-nums;margin-top:-4px;animation:wm-fade 1s var(--ease) .7s both}
 @keyframes wm-fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-@media(prefers-reduced-motion:reduce){.hero-wordmark::before,.hero-wordmark::after,.hero-coords{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero-wordmark::before,.hero-wordmark::after{animation:none}}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .25s,background .25s}
@@ -411,7 +410,6 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
     <div class="hero-lockup">
       <svg class="hero-cube" role="img" aria-label="Cursor logo"><use href="#cube"/></svg>
       <span class="hero-wordmark">Cursor <em>Miami</em></span>
-      <span class="hero-coords" aria-hidden="true">25.7617&deg; N &middot; 80.1918&deg; W</span>
     </div>
     <h1>Build fast.<br /><span class="grad-text">Ship faster.</span></h1>
     <p class="tagline">Hackathons, meetups and demo nights for builders shipping with AI, from Wynwood to Miami Beach. Powered by Cursor, fueled by cafecito.</p>
