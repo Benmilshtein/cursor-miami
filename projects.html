@@ -85,6 +85,7 @@ h1,h2,h3{margin:0;font-family:'Space Grotesk','Inter',sans-serif;font-weight:700
 /* theme switch: console-settings track + sliding thumb */
 .theme-btn{position:relative;width:62px;height:32px;border-radius:100px;border:1px solid var(--line-2);background:var(--bg-3);box-shadow:inset 0 1px 4px rgba(0,0,0,.22);cursor:pointer;padding:0;flex:none;-webkit-tap-highlight-color:transparent;transition:border-color .2s,background .25s}
 .theme-btn:hover{border-color:var(--line-3)}
+.theme-btn::after{content:"";position:absolute;inset:-7px}
 .tk-ic{position:absolute;top:50%;width:13px;height:13px;color:var(--faint);transform:translateY(-50%);transition:opacity .25s}
 .tk-moon{left:10px;opacity:0}
 .tk-sun{right:10px;opacity:1}
