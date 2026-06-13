@@ -42,6 +42,7 @@ document.documentElement.dataset.theme=t;})();
   --grad-btn:linear-gradient(100deg,#d61377,#d6402f 52%,#088577);
   --maxw:1140px; --r:16px; --r-lg:24px;
   --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-spring:cubic-bezier(.34,1.3,.4,1);
   /* cursor cube, dark-bg variant (original icon) */
   --cube-f1:#4a4a54; --cube-f2:#3a3a44; --cube-f3:#34343e; --cube-f4:#2c2c36;
   --cube-fold:#ffffff; --cube-sliver:#d6d6dd; --cube-edge:rgba(255,255,255,.16);
@@ -81,20 +82,39 @@ h1,h2,h3{margin:0;font-family:'Space Grotesk','Inter',sans-serif;font-weight:700
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;min-height:48px;padding:13px 26px;border-radius:100px;border:1px solid transparent;transition:transform .18s var(--ease),box-shadow .25s,background .2s,border-color .2s;white-space:nowrap}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;font-weight:700;font-size:15px;letter-spacing:.01em;min-height:48px;padding:13px 26px;border-radius:100px;border:1px solid transparent;white-space:nowrap;-webkit-tap-highlight-color:transparent;transition:transform .22s var(--ease-spring),box-shadow .3s,background-color .2s,border-color .2s,background-position .5s var(--ease)}
+.btn:active{transform:translateY(0) scale(.97);transition-duration:.08s}
 .btn svg{width:18px;height:18px;flex:none}
-.btn-neon{background:var(--grad-btn);background-clip:padding-box;color:#fff;border:none;padding:14px 27px;box-shadow:var(--neon-sh)}
-.btn-neon:hover{transform:translateY(-2px);box-shadow:var(--neon-sh-hov)}
-.btn-ghost{background:var(--glass);color:var(--ink);border-color:var(--line-2);backdrop-filter:blur(8px)}
-.btn-ghost:hover{border-color:var(--line-3);transform:translateY(-2px)}
-@media(prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+/* arrows nudge along their direction of travel; logos stay put */
+.btn .arr{transition:transform .25s var(--ease-spring)}
+.btn:hover .arr{transform:translateX(3px)}
+.btn:hover .arr.ext{transform:translate(2px,-2px)}
+/* primary: gradient that drifts toward teal on hover + glass top light */
+.btn-neon{background:var(--grad-btn);background-size:160% 100%;background-position:0% 50%;color:#fff;border:none;padding:14px 27px;box-shadow:var(--neon-sh),inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.18)}
+.btn-neon:hover{transform:translateY(-2px);background-position:90% 50%;box-shadow:var(--neon-sh-hov),inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(0,0,0,.18)}
+/* secondary: quiet glass whose border resolves into the brand gradient on hover */
+.btn-ghost{background:var(--glass);color:var(--ink);border-color:var(--line-2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.btn-ghost::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none}
+.btn-ghost:hover{border-color:transparent;transform:translateY(-2px)}
+.btn-ghost:hover::before{opacity:.9}
+@media(prefers-reduced-motion:reduce){.btn,.btn .arr,.btn-ghost::before{transition:none}.btn:hover,.btn:active{transform:none}.btn:hover .arr,.btn:hover .arr.ext{transform:none}}
 
 /* logo */
 .logo-cube{width:32px;height:32px;flex:none;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
 .hero-lockup{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:30px}
 .hero-cube{width:84px;height:84px;filter:var(--cube-glow)}
-.hero-wordmark{font-size:clamp(17px,2.4vw,21px);font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--ink)}
-.hero-wordmark em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-wordmark{display:flex;align-items:center;gap:clamp(14px,2vw,20px);font-size:clamp(17px,2.4vw,21px);font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2);text-indent:.3em} /* text-indent balances trailing tracking for optical centering */
+.hero-wordmark em{font-style:normal;font-weight:800;letter-spacing:.26em;color:transparent;background:var(--grad);-webkit-background-clip:text;background-clip:text;margin-left:-.06em}
+/* flanking hairlines, tinted to the gradient's end colors, drawn in on load */
+.hero-wordmark::before,.hero-wordmark::after{content:"";height:1px;width:clamp(30px,5.4vw,56px);flex:none;animation:wm-rule .9s var(--ease) .25s both}
+.hero-wordmark::before{background:linear-gradient(90deg,transparent,rgba(255,45,146,.55));transform-origin:right}
+.hero-wordmark::after{background:linear-gradient(90deg,rgba(16,214,194,.55),transparent);transform-origin:left}
+html[data-theme="light"] .hero-wordmark::before{background:linear-gradient(90deg,transparent,rgba(214,19,119,.45))}
+html[data-theme="light"] .hero-wordmark::after{background:linear-gradient(90deg,rgba(8,133,119,.45),transparent)}
+@keyframes wm-rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero-coords{font-family:'Space Grotesk','Inter',sans-serif;font-size:10.5px;font-weight:500;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:var(--faint);font-variant-numeric:tabular-nums;margin-top:-4px;animation:wm-fade 1s var(--ease) .7s both}
+@keyframes wm-fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.hero-wordmark::before,.hero-wordmark::after,.hero-coords{animation:none}}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .25s,background .25s}
@@ -146,8 +166,6 @@ html[data-theme="light"] .theme-btn:active .tt-thumb{transform:translateX(30px) 
 .orb-2{--oc:var(--cyan);width:600px;height:600px;bottom:-320px;right:-180px;opacity:var(--orb-o2)}
 .orb-3{--oc:var(--violet);width:460px;height:460px;top:26%;right:14%;opacity:var(--orb-o3)}
 .hero .wrap{position:relative;z-index:2}
-.eyebrow{font-family:'Space Grotesk','Inter',sans-serif;font-size:15.5px;font-weight:500;color:var(--muted);margin:0}
-.eyebrow b{font-weight:600;color:var(--ink-2)}
 .hero h1{font-size:clamp(42px,7.4vw,86px);font-weight:900;margin:26px auto 0;max-width:900px}
 .hero .tagline{color:var(--ink-2);font-size:clamp(16px,2.2vw,20px);max-width:640px;margin:22px auto 0}
 .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
@@ -262,12 +280,9 @@ html[data-theme="light"] .theme-btn:active .tt-thumb{transform:translateX(30px) 
 /* why */
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:64px}
 @media(max-width:860px){.why-grid{grid-template-columns:1fr}}
-.why{padding:28px;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r-lg)}
-.why .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--glass);border:1px solid var(--line-2);margin-bottom:18px}
-.why .ic svg{width:22px;height:22px;color:var(--cyan)}
-.why:nth-child(2) .ic svg{color:var(--magenta)}
-.why:nth-child(3) .ic svg{color:var(--coral)}
-.why h3{font-size:18px}
+.why{padding:22px 4px 0;border-top:1px solid var(--line-2)}
+.why .wnum{display:block;font-family:'Space Grotesk','Inter',sans-serif;font-size:14px;font-weight:600;color:var(--coral);margin-bottom:12px;letter-spacing:.06em}
+.why h3{font-size:19px}
 .why p{color:var(--muted);font-size:14.5px;margin:10px 0 0}
 
 /* cta */
@@ -362,7 +377,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
     </div>
     <a class="btn btn-neon nav-cta" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">
       Subscribe on Luma
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      <svg class="arr ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
     </a>
     <button class="theme-btn" id="themeBtn" role="switch" aria-checked="false" aria-label="Toggle light theme">
       <svg class="tk-ic tk-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.3 14.2A8.3 8.3 0 1 1 9.8 3.7a6.7 6.7 0 0 0 10.5 10.5z"/></svg>
@@ -393,14 +408,14 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
     <div class="hero-lockup">
       <svg class="hero-cube" role="img" aria-label="Cursor logo"><use href="#cube"/></svg>
       <span class="hero-wordmark">Cursor <em>Miami</em></span>
+      <span class="hero-coords" aria-hidden="true">25.7617&deg; N &middot; 80.1918&deg; W</span>
     </div>
-    <p class="eyebrow">The official Cursor community in <b>Miami</b></p>
     <h1>Build fast.<br /><span class="grad-text">Ship faster.</span></h1>
     <p class="tagline">Hackathons, meetups and demo nights for builders shipping with AI, from Wynwood to Miami Beach. Powered by Cursor, fueled by cafecito.</p>
     <div class="hero-ctas">
       <a class="btn btn-neon" id="nextEventBtn" href="https://luma.com/cursor-miami?period=past" target="_blank" rel="noopener">
         Join the next event
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a class="btn btn-ghost" href="#past">See past events</a>
     </div>
@@ -441,7 +456,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
         <h3>Something big is loading&hellip;</h3>
         <p>The last drop hit 444 RSVPs and the room was full. Location secret, date soon, spots gone fast. Subscribers hear it first.</p>
         <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">Get first dibs
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          <svg class="arr ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </a>
       </div>
     </div>
@@ -563,7 +578,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
     <div class="proj-strip reveal">
       <p><strong>First builds drop soon.</strong> Shipped something at a Cursor Miami event? Claim your spot, full credit included.</p>
       <a class="btn btn-ghost" href="#" data-form="project">Submit your project
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        <svg class="arr ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
       </a>
     </div>
   </div>
@@ -601,17 +616,17 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 
     <div class="why-grid">
       <div class="why reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg></div>
+        <span class="wnum">01</span>
         <h3>Ship something real</h3>
         <p>Hackathons and build nights where ideas become demos before the cafecito wears off. Bring a laptop, leave with a product.</p>
       </div>
       <div class="why reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <span class="wnum">02</span>
         <h3>Meet your co-founder</h3>
         <p>Founders, engineers, designers and dreamers. 2,200+ RSVPs deep and growing every event. Your next collaborator is already here.</p>
       </div>
       <div class="why reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <span class="wnum">03</span>
         <h3>Learn from the source</h3>
         <p>Live demos of the newest Cursor features, agent workflows and AI-first development, sometimes with the Cursor team in the room. Plus the part most communities skip: shipping AI that's actually secure.</p>
       </div>
@@ -666,7 +681,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <div class="hero-ctas">
         <a class="btn btn-neon" href="https://luma.com/cursor-miami" target="_blank" rel="noopener">
           Subscribe to our calendar
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          <svg class="arr ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </a>
         <a class="btn btn-ghost" href="#" data-form="inquiry">Speak or sponsor</a>
       </div>
@@ -680,7 +695,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
     <div class="proj-strip reveal">
       <p><strong>The LAB Miami</strong> is our home base: the Wynwood campus where the city's most relentless founders and engineers build, and where most of our events happen.</p>
       <a class="btn btn-ghost" href="https://www.thelabmiami.com" target="_blank" rel="noopener">Visit The LAB
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        <svg class="arr ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
       </a>
       <a class="lab-mark" href="https://www.thelabmiami.com" target="_blank" rel="noopener" aria-label="The LAB Miami">
         <svg viewBox="0 0 96 38" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" aria-hidden="true">
