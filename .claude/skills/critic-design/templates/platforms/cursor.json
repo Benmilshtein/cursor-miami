@@ -1,0 +1,20 @@
+{
+  "platform": "cursor",
+  "displayName": "Cursor",
+  "installType": "full",
+  "folderStructure": {
+    "root": ".cursor",
+    "skillPath": "skills/critic-design",
+    "filename": "SKILL.md"
+  },
+  "frontmatter": {
+    "name": "critic-design",
+    "description": "Design critic persona for UI/UX review. Acts as a discerning top user and produces structured feedback briefs for the ui-ux-pro-max agent to implement. Pairs with ui-ux-pro-max."
+  },
+  "sections": {
+    "quickReference": false
+  },
+  "title": "critic-design",
+  "description": "Top-user design critic that reviews interfaces from a real visitor's perspective and hands structured improvement briefs to the ui-ux-pro-max agent.",
+  "skillOrWorkflow": "Skill"
+}
