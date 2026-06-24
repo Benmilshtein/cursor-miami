@@ -3,9 +3,9 @@
 //
 // Setup:
 //   1. Create a free Airtable base named e.g. "Cursor Miami" with two tables:
-//      - "Inquiries": fields  Type | Name | Email | Company | Message
+//      - "Inquiries": fields  Type | Name | Email | Company | Title | Vision | Budget | Message
 //      - "Projects":  fields  Project | Name | Email | Event | Links | Description
-//        (all "Single line text" except Message/Description = "Long text")
+//        (all "Single line text" except Vision/Message/Description = "Long text")
 //   2. Create a token at https://airtable.com/create/tokens with scope
 //      data.records:write limited to that base.
 //   3. Find the base id (starts with "app") at https://airtable.com/api
@@ -46,13 +46,24 @@ export default async function handler(req, res) {
       Links: String(b.links || '').slice(0, 1000),
       Description: String(b.message || '').slice(0, 5000)
     };
-  } else if (b.type === 'speaker' || b.type === 'sponsor' || b.type === 'other') {
+  } else if (['speaker', 'sponsor', 'cosponsor', 'collaborate', 'cohost', 'other'].includes(b.type)) {
+    const TYPE_LABELS = {
+      speaker: 'Speaker',
+      sponsor: 'Sponsor',
+      cosponsor: 'Co-sponsor / partnership',
+      collaborate: 'Collaborate',
+      cohost: 'Co-host',
+      other: 'Other'
+    };
     table = 'Inquiries';
     fields = {
-      Type: b.type.charAt(0).toUpperCase() + b.type.slice(1),
+      Type: TYPE_LABELS[b.type],
       Name: name,
       Email: email,
       Company: String(b.company || '').slice(0, 300),
+      Title: String(b.title || '').slice(0, 200),
+      Vision: String(b.vision || '').slice(0, 5000),
+      Budget: String(b.budget || '').slice(0, 100),
       Message: String(b.message || '').slice(0, 5000)
     };
   } else {

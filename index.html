@@ -336,6 +336,9 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 .fmsg.err{color:var(--coral)}
 .fmsg.ok{color:#34d399}
 .hp{position:absolute !important;left:-9999px;width:1px;height:1px;opacity:0}
+.fcard .fgroup{border:1px solid var(--line-2);border-radius:16px;padding:16px 14px 2px;margin:4px 0 14px;background:linear-gradient(180deg,rgba(16,214,194,.06),transparent)}
+.fcard .fgroup-head{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin:0 0 4px 2px}
+.fcard .fgroup-sub{display:block;font-size:12.5px;color:var(--muted);margin:0 0 14px 2px;letter-spacing:0;text-transform:none;font-weight:500}
 .fsuccess{text-align:center;padding:30px 6px}
 .fsuccess h3{margin-bottom:10px}
 .fsuccess p{color:var(--muted);font-size:15px;margin:0}
@@ -684,7 +687,7 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
           Subscribe to our calendar
           <svg class="arr ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </a>
-        <a class="btn btn-ghost" href="#" data-form="inquiry">Speak or sponsor</a>
+        <a class="btn btn-ghost" href="#" data-form="inquiry">Partner with us</a>
       </div>
     </div>
   </div>
@@ -740,14 +743,19 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
     <form id="theForm" novalidate>
       <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <div id="fInquiryFields">
-        <label for="fItype">I want to</label>
+        <label for="fItype">We're interested in</label>
         <select id="fItype" name="itype">
-          <option value="speaker">Speak at an event</option>
-          <option value="sponsor">Sponsor the community</option>
+          <option value="sponsor">Sponsoring an event</option>
+          <option value="cosponsor">Co-sponsoring / partnership</option>
+          <option value="collaborate">Collaborating</option>
+          <option value="cohost">Co-hosting an event</option>
+          <option value="speaker">Speaking at an event</option>
           <option value="other">Something else</option>
         </select>
-        <label for="fCompany">Company / organization</label>
-        <input id="fCompany" name="company" placeholder="Optional" />
+        <label for="fCompany">Company / organization *</label>
+        <input id="fCompany" name="company" placeholder="Who you're reaching out on behalf of" />
+        <label for="fTitle">Your title / role</label>
+        <input id="fTitle" name="title" placeholder="e.g. Head of Partnerships" />
       </div>
       <div id="fProjectFields" hidden>
         <label for="fProject">Project name *</label>
@@ -767,8 +775,26 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
       <input id="fName" name="name" required placeholder="Full name" />
       <label for="fEmail">Email *</label>
       <input id="fEmail" name="email" type="email" required placeholder="you@example.com" />
-      <label for="fMessage" id="fMsgLabel">Message</label>
-      <textarea id="fMessage" name="message" placeholder="The more context, the better."></textarea>
+      <div id="fPartnerFields" class="fgroup">
+        <span class="fgroup-head">Vision &amp; budget</span>
+        <span class="fgroup-sub">A quick picture of what you have in mind so we can match the right partnership.</span>
+        <label for="fVision">Your vision</label>
+        <textarea id="fVision" name="vision" placeholder="What you'd love to build with Cursor Miami — the audience you want to reach, your goals, and the kind of partnership you're imagining."></textarea>
+        <label for="fBudget">Budget range</label>
+        <select id="fBudget" name="budget">
+          <option value="">Prefer to discuss</option>
+          <option>Under $1k</option>
+          <option>$1k–$5k</option>
+          <option>$5k–$15k</option>
+          <option>$15k–$50k</option>
+          <option>$50k+</option>
+          <option>In-kind / non-monetary</option>
+        </select>
+      </div>
+      <div id="fMessageWrap">
+        <label for="fMessage" id="fMsgLabel">Message</label>
+        <textarea id="fMessage" name="message" placeholder="The more context, the better."></textarea>
+      </div>
       <button class="btn btn-neon" type="submit" id="fSend">Send it</button>
       <p class="fmsg" id="fMsg" role="status"></p>
     </form>
@@ -794,18 +820,20 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 </div>
 
 <script>
-// form modal (speaker/sponsor inquiries + project submissions -> /api/submit -> Airtable)
+// form modal (partnership inquiries + project submissions -> /api/submit -> Airtable)
 const fmodal=document.getElementById('fmodal'),theForm=document.getElementById('theForm'),
       fTitle=document.getElementById('fTitle'),fSub=document.getElementById('fSub'),
       fInq=document.getElementById('fInquiryFields'),fProj=document.getElementById('fProjectFields'),
+      fPartner=document.getElementById('fPartnerFields'),fMsgWrap=document.getElementById('fMessageWrap'),
       fMsgEl=document.getElementById('fMsg'),fSend=document.getElementById('fSend');
 let fMode='inquiry';
 function openForm(mode){
   fMode=mode;
   const proj=mode==='project';
   fInq.hidden=proj;fProj.hidden=!proj;
-  fTitle.textContent=proj?'Submit your project':'Speak or sponsor';
-  fSub.textContent=proj?'Built something at one of our events? Claim your recognition.':'Tell us a little about you. We read everything and reply fast.';
+  fPartner.hidden=proj;fMsgWrap.hidden=!proj;
+  fTitle.textContent=proj?'Submit your project':'Partner with Cursor Miami';
+  fSub.textContent=proj?'Built something at one of our events? Claim your recognition.':'Interested in sponsoring, co-sponsoring, collaborating or co-hosting? Fill out your information and we’ll be in touch fast.';
   fMsgEl.textContent='';fMsgEl.className='fmsg';
   fSend.disabled=false;fSend.textContent='Send it';
   fmodal.classList.add('open');document.body.style.overflow='hidden';
@@ -824,7 +852,8 @@ theForm.addEventListener('submit',async e=>{
   const payload={
     type:fMode==='project'?'project':fd.get('itype'),
     name:fd.get('name'),email:fd.get('email'),message:fd.get('message'),
-    company:fd.get('company'),project:fd.get('project'),event:fd.get('event'),links:fd.get('links'),
+    company:fd.get('company'),title:fd.get('title'),vision:fd.get('vision'),budget:fd.get('budget'),
+    project:fd.get('project'),event:fd.get('event'),links:fd.get('links'),
     website:fd.get('website')
   };
   if(!payload.name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email||'')){
