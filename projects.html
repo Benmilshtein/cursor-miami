@@ -413,13 +413,19 @@ footer::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;b
 <script>
 // theme toggle (shared key with index.html)
 const root=document.documentElement,themeBtn=document.getElementById('themeBtn'),themeMeta=document.querySelector('meta[name="theme-color"]');
-themeBtn.addEventListener('click',()=>{
-  const t=root.dataset.theme==='light'?'dark':'light';
+function applyTheme(t){
   root.dataset.theme=t;
   themeBtn.setAttribute('aria-checked',t==='light');
   try{localStorage.setItem('cm-theme',t)}catch(e){}
+  themeBtn.setAttribute('aria-label','Switch to '+(t==='light'?'dark':'light')+' theme');
   themeMeta.setAttribute('content',t==='light'?'#f5f4ef':'#0a0a0f');
-});
+}
+themeBtn.addEventListener('click',()=>applyTheme(root.dataset.theme==='light'?'dark':'light'));
+themeBtn.setAttribute('aria-checked',root.dataset.theme==='light');
+if(root.dataset.theme==='light'){
+  themeBtn.setAttribute('aria-label','Switch to dark theme');
+  themeMeta.setAttribute('content','#f5f4ef');
+}
 
 // nav border on scroll
 const nav=document.getElementById('nav');
